@@ -12,7 +12,7 @@ pool:
 variables:
 - group: rarareserve
 - name: imageName
-  value: 'rarareserve:$(build.buildid)'
+  value: 'rarareserve-api:$(build.buildid)'
 
 steps:
 - script: 'docker build -t $(DOCKER_USERID)/$(imageName) .'
