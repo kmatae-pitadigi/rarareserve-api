@@ -12,6 +12,7 @@ pool:
 variables:
   dockerId: pitadigi
   imageName: rarareserve-api:$(build.buildid)
+
 # - group: rarareserve
 # - name: dockerId
 #  value: pitadigi
@@ -19,11 +20,17 @@ variables:
 #   value: rarareserve-api:$(build.buildid)
 
 steps:
-- script: |
-    docker build -t $(dockerId)/$(imageName) .
-    docker login -u $(dockerId) -p $(pswd) $(dockerId).azurecr.io
-    docker push $(dockerId).azurecr.io/$(imageName)
-    docker logout
+- script: docker build -t $(dockerId)/$(imageName) .
+- script: docker login -u $(dockerId) -p $(pswd) $(dockerId).azurecr.io
   env:
     pswd: $(dockerPassword)
-  displayName: 'Docker image build'
+- script: docker push $(dockerId).azurecr.io/$(imageName)
+
+# - script: |
+#     docker build -t $(dockerId)/$(imageName) .
+#     docker login -u $(dockerId) -p $(pswd) $(dockerId).azurecr.io
+#     docker push $(dockerId).azurecr.io/$(imageName)
+#     docker logout
+#   env:
+#     pswd: $(dockerPassword)
+#   displayName: 'Docker image build'
