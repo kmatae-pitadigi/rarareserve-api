@@ -6,7 +6,7 @@
 #   サーバー: webpack+gulp
 
 # 使用するNode.jsのバージョンを設定(ローカル環境に合わせておく)
-FROM node:10.15.3
+FROM node:10.15.3-alpine
 
 # ポート番号を指定
 ENV PORT 3000
@@ -22,7 +22,7 @@ COPY . .
 RUN npm install pm2 -g
 
 # package.jsonをコンテナにコピーし、必要なパッケージをインストールする
-RUN NODE_ENV=development npm --unsafe-perm install
+RUN npm --unsafe-perm ci
 
 # 環境変数を設定する
 ENV NODE_ENV=production
