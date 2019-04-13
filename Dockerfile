@@ -1,8 +1,6 @@
 # 環境
-# クライアント: Angular
 # サーバー: Node.js,NestJS,GraphQL,TypeORM,SQL Server
 # ビルド環境
-#   クライアント: ng build
 #   サーバー: webpack+gulp
 
 # 使用するNode.jsのバージョンを設定(ローカル環境に合わせておく)
