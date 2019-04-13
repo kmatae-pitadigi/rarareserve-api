@@ -19,7 +19,7 @@ steps:
   displayName: 'docker build'
 - script: 'docker login -u $(DOCKER_USERID) -p $(DOCKER_PASSWORD) $(DOCKER_SERVER)'
   displayName: 'docker login'
-- script: 'docker push $(DOCKER_SERVER)/$(imageName)'
+- script: 'docker push $(DOCKER_USERID)/$(imageName)'
   displayName: 'docker push'
 - script: 'docker logout'
   displayName: 'docker logout'
