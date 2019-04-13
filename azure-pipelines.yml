@@ -10,11 +10,13 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-- group: rarareserve
-- name: dockerId
-  value: pitadigi
-- name: imageName
-  value: rarareserve-api:$(build.buildid)
+  dockerId: pitadigi
+  imageName: rarareserve-api:$(build.buildid)
+# - group: rarareserve
+# - name: dockerId
+#  value: pitadigi
+# - name: imageName
+#   value: rarareserve-api:$(build.buildid)
 
 steps:
 - script: |
