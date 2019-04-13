@@ -1,0 +1,77 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "nodemon",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}\\dist\\server\\server.js",
+            "restart": false,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "envFile": "${workspaceFolder}\\.env",
+            "postDebugTask": "stop node"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "node",
+            "outputCapture": "std",
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}\\dist\\server\\server.js",
+            "envFile": "${workspaceFolder}\\.env",
+            "sourceMaps": true
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Heroku",
+            "address": "localhost",
+            "port": 9090,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/",
+            "protocol": "inspector"
+        },
+        {
+            "name": "Launch Server (AZDS)",
+            "type": "node",
+            "request": "launch",
+            "protocol": "inspector",
+            "preLaunchTask": "azds: prelaunch",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "azds",
+            "runtimeArgs": [
+                "exec",
+                "--on-exit-resume-up",
+                "--",
+                "node",
+                "--inspect=0.0.0.0:9229",
+                "--inspect-brk",
+                "--nolazy",
+                "server.js"
+            ],
+            "address": "127.0.0.1",
+            "port": 55337,
+            "localRoot": "${workspaceFolder}/.",
+            "remoteRoot": "/app"
+        }
+    ],
+    // Node.jsとAngularのデバッグを開始する設定
+    "compounds": [
+        {
+            "name": "fullstack",
+            "configurations": ["node", "chrome"]
+        }
+    ]
+}

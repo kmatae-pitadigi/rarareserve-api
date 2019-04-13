@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - 1433:1433
+    restart: always
+volumes:
+  skidsdb:
+    external: true
