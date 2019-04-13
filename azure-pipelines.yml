@@ -19,7 +19,6 @@ variables:
   value: $(dockerId).azurecr.io
 
 steps:
-# - script: docker build -t $(dockerUrl)/$(imageName) .
 - script: |
     docker build -t $(dockerUrl)/$(imageName) .
     docker login -u $(dockerId) -p $(dockerPassword) $(dockerUrl)
