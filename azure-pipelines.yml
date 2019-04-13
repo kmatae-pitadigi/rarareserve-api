@@ -15,14 +15,17 @@ variables:
   value: pitadigi
 - name: imageName
   value: rarareserve-api:$(build.buildid)
+- name: dockerUrl
+  value: $(dockerId).azurecr.io
+
 #  dockerId: pitadigi
 #  imageName: rarareserve-api:$(build.buildid)
 
 steps:
-- script: docker build -t $(dockerId)/$(imageName) .
+- script: docker build -t $(dockerUrl)/$(imageName) .
 - script: |
-    docker login -u $(dockerId) -p $(dockerPassword) $(dockerId).azurecr.io
-    docker push $(dockerId).azurecr.io/$(imageName)
+    docker login -u $(dockerId) -p $(dockerPassword) $(dockerUrl)
+    docker push $(dockerUrl)/$(imageName)
 
 # - script: |
 #     docker build -t $(dockerId)/$(imageName) .
