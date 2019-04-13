@@ -14,11 +14,11 @@ EXPOSE 3000
 
 COPY package.json package-lock.json ./
 
-# PM2をインストールする
-RUN npm install pm2 -g
-
 # package.jsonをコンテナにコピーし、必要なパッケージをインストールする
 RUN npm ci
+
+# PM2をインストールする
+RUN npm install pm2 -g
 
 # ソースをコピーする(コピーしないファイルは.dockerignoreで制御)
 COPY . .
