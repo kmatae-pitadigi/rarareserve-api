@@ -21,18 +21,13 @@ COPY . .
 # PM2をインストールする
 RUN npm install pm2 -g
 
-# @angular/cliをインストールする
-RUN npm install @angular/cli@7.3.6 -g
-
 # package.jsonをコンテナにコピーし、必要なパッケージをインストールする
 RUN NODE_ENV=development npm --unsafe-perm install
 
 # 環境変数を設定する
 ENV NODE_ENV=production
 
-RUN ng build --prod --aot --ts-config ./src/client/tsconfig.client.json --configuration=./angular.json
-
-# ビルドする(gulpでクライアント、サーバー、DBマイグレーションをビルド)
+# ビルドする(gulpでサーバー、DBマイグレーションをビルド)
 RUN npm run build
 
 # node.jsアプリケーションを実行する
