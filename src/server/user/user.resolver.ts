@@ -9,8 +9,6 @@ import { ChangePassword } from './dto/change-password.dto';
 import { ChangePasswordResult } from './dto/change-password-result.dto';
 import { ChangeProfile } from './dto/change-profile.dto';
 import { ChangeProfileResult } from './dto/change-profile-result.dto';
-import { resolve } from 'dns';
-import { thisExpression } from '@babel/types';
 
 @Resolver(of => User)
 export class UserResolver {
