@@ -12,17 +12,16 @@ FROM node:10.15.3-alpine
 ENV PORT 3000
 EXPOSE 3000
 
-# WORKDIRは/
-WORKDIR /
-
-# ソースをコピーする(コピーしないファイルは.dockerignoreで制御)
-COPY . .
+COPY package.json package-lock.json ./
 
 # PM2をインストールする
 RUN npm install pm2 -g
 
 # package.jsonをコンテナにコピーし、必要なパッケージをインストールする
-RUN npm --unsafe-perm ci
+RUN npm ci
+
+# ソースをコピーする(コピーしないファイルは.dockerignoreで制御)
+COPY . .
 
 # 環境変数を設定する
 ENV NODE_ENV=production
