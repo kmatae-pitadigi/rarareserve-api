@@ -15,11 +15,9 @@ variables:
   value: 'rarareserve-api:$(build.buildid)'
 
 steps:
-- script: 'docker build -t $(DOCKER_USERID)/$(imageName) .'
-  displayName: 'docker build'
-- script: 'docker login -u $(DOCKER_USERID) -p $(DOCKER_PASSWORD) $(DOCKER_SERVER)'
-  displayName: 'docker login'
-- script: 'docker push $(DOCKER_USERID)/$(imageName)'
-  displayName: 'docker push'
-- script: 'docker logout'
-  displayName: 'docker logout'
+- script: |
+    'docker build -t $(DOCKER_USERID)/$(imageName) .'
+    'docker login -u $(DOCKER_USERID) -p $(DOCKER_PASSWORD) $(DOCKER_SERVER)'
+    'docker push $(DOCKER_USERID)/$(imageName)'
+    'docker logout'
+  displayName: 'Docker image build'
