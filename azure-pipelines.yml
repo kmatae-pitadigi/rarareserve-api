@@ -19,7 +19,9 @@ variables:
 steps:
 - script: |
     docker build -t $(dockerId)/$(imageName) .
-    docker login -u $(dockerId) -p $(dockerPassword) $(dockerId).azurecr.io
+    docker login -u $(dockerId) -p $(pswd) $(dockerId).azurecr.io
     docker push $(dockerId)/$(imageName)
     docker logout
+  env:
+    pswd: $(dockerPassword)
   displayName: 'Docker image build'
