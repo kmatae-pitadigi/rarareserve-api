@@ -15,7 +15,7 @@ EXPOSE 3000
 COPY package.json package-lock.json ./
 
 # package.jsonをコンテナにコピーし、必要なパッケージをインストールする
-RUN npm ci
+RUN npm --unsafe-perm ci
 
 # PM2をインストールする
 RUN npm install pm2 -g
