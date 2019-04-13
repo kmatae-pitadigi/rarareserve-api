@@ -11,25 +11,6 @@
                 "isDefault": true
             },
             "problemMatcher": []
-        },
-        {
-            "label": "stop node",
-            "type": "shell",
-            "command": "taskkill /F /IM node.exe"
-        },
-        {
-            "label": "azds: prelaunch",
-            "command": "azds",
-            "args": [
-                "up",
-                "--port=55337:9229",
-                "--await-exec",
-                "--keep-alive"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": []
         }
     ]
 }
