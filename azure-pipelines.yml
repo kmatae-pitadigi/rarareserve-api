@@ -10,14 +10,15 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-- group: rarareserve
-- name: imageName
-  value: 'rarareserve-api:$(build.buildid)'
+  dockerId: pitadigi
+  imageName: rarareserve-api:$(build.buildid)
 
 steps:
 - script: |
-    'docker build -t $(DOCKER_USERID)/$(imageName) .'
-    'docker login -u $(DOCKER_USERID) -p $(DOCKER_PASSWORD) $(DOCKER_SERVER)'
-    'docker push $(DOCKER_USERID)/$(imageName)'
-    'docker logout'
+    docker build -t $(dockerId)/$(imageName) .
+    docker login -u $(dockerId) -p $(password) $(dockerId).azurecr.io
+    docker push $(dockerId)/$(imageName)
+    docker logout
   displayName: 'Docker image build'
+  env:
+    password: $(dockerPassword)
