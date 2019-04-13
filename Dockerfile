@@ -6,7 +6,7 @@
 #   サーバー: webpack+gulp
 
 # 使用するNode.jsのバージョンを設定(ローカル環境に合わせておく)
-FROM node:10.15.3-alpine
+FROM node:10.15.3
 
 # ポート番号を指定
 ENV PORT 3000
