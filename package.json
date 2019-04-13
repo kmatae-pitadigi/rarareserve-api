@@ -54,7 +54,7 @@
     "file-loader": "^3.0.1",
     "gulp": "^4.0.0",
     "gulp-typescript": "^5.0.1",
-    "jest": "^23.6.0",
+    "jest": "^24.7.1",
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
     "supertest": "^3.4.1",
