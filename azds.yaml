@@ -1,0 +1,33 @@
+kind: helm-release
+apiVersion: 1.1
+build:
+  context: .
+  dockerfile: Dockerfile
+install:
+  chart: charts/rarareserve-api
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+  set:
+    replicaCount: 1
+    image:
+      repository: rarareserve-api
+      tag: $(tag)
+      pullPolicy: Never
+    ingress:
+      annotations:
+        kubernetes.io/ingress.class: traefik-azds
+      hosts:
+      # This expands to form the service's public URL: [space.s.][rootSpace.]rarareserve-api.<random suffix>.<region>.azds.io
+      # Customize the public URL by changing the 'rarareserve-api' text between the $(rootSpacePrefix) and $(hostSuffix) tokens
+      # For more information see https://aka.ms/devspaces/routing
+      - $(spacePrefix)$(rootSpacePrefix)rarareserve-api$(hostSuffix)
+configurations:
+  develop:
+    build:
+      useGitIgnore: true
+    container:
+      sync:
+      - "!**/package.json"
+      iterate:
+        processesToKill: [node]

@@ -728,8 +728,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
 const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
 const helmet = __webpack_require__(/*! helmet */ "helmet");
-const express = __webpack_require__(/*! express */ "express");
-const path = __webpack_require__(/*! path */ "path");
 const app_module_1 = __webpack_require__(/*! ./app.module */ "./src/server/app.module.ts");
 const process = __webpack_require__(/*! process */ "process");
 const init_data_setup_1 = __webpack_require__(/*! ./init.data.setup */ "./src/server/init.data.setup.ts");
@@ -737,9 +735,6 @@ function bootstrap() {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         const app = yield core_1.NestFactory.create(app_module_1.AppModule);
         app.use(helmet());
-        // graphql以外のルーティングはAngularで行う
-        app.use(express.static(path.join(__dirname, '../client')));
-        app.use(/^\/(?!graphql).*/, express.static(path.join(__dirname, '../client/index.html')));
         // 初期値を設定する
         const initDataSetup = new init_data_setup_1.InitDataSetup();
         initDataSetup.setup();
@@ -2657,17 +2652,6 @@ module.exports = require("bcrypt");
 
 /***/ }),
 
-/***/ "express":
-/*!**************************!*\
-  !*** external "express" ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("express");
-
-/***/ }),
-
 /***/ "fs":
 /*!*********************!*\
   !*** external "fs" ***!
@@ -2709,17 +2693,6 @@ module.exports = require("jsonwebtoken");
 /***/ (function(module, exports) {
 
 module.exports = require("passport-jwt");
-
-/***/ }),
-
-/***/ "path":
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
 
 /***/ }),
 

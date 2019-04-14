@@ -11,10 +11,6 @@ async function bootstrap() {
 
   app.use(helmet());
 
-  // graphql以外のルーティングはAngularで行う
-  app.use(express.static(path.join(__dirname, '../client')));
-  app.use(/^\/(?!graphql).*/, express.static(path.join(__dirname, '../client/index.html')));
-
   // 初期値を設定する
   const initDataSetup: InitDataSetup = new InitDataSetup();
   initDataSetup.setup();
