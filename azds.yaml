@@ -31,3 +31,25 @@ configurations:
       - "!**/package.json"
       iterate:
         processesToKill: [node]
+    install:
+      set:
+        # 環境変数の設定
+        secrets:
+          # process.env.DATABASE_URL
+          database:
+            url: "$DATABASE_URL"
+          # process.env.RSA_PRIVATE_KEY
+          # process.env.RSA_PUBLIC_KEY
+          rsa:
+            private:
+              key: "$RSA_PRIVATE_KEY"
+            public:
+              key: "$RSA_PUBLIC_KEY"
+          # process.env.SENDGRID_API_KEY
+          sendgrid:
+            api:
+              key: "$SENDGRID_API_KEY"
+          # process.env.ENGINE_API_KEY
+          engine:
+            api:
+              key: "$ENGINE_API_KEY"
