@@ -20,7 +20,7 @@
             "restart": false,
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "envFile": "${workspaceFolder}\\.env",
+            "envFile": "${workspaceFolder}\\.env.local",
             "postDebugTask": "stop node"
         },
         {
@@ -30,7 +30,7 @@
             "outputCapture": "std",
             "console": "integratedTerminal",
             "program": "${workspaceFolder}\\dist\\server\\server.js",
-            "envFile": "${workspaceFolder}\\.env",
+            "envFile": "${workspaceFolder}\\.env.local",
             "sourceMaps": true
         },
         {
