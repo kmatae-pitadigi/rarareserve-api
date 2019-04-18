@@ -27,10 +27,14 @@ import { SiteConfig } from './site-config/site-config';
     }),
     TypeOrmModule.forRoot({
       type: 'mssql',
-      url: process.env.DATABASE_URL,
+      host: process.env.DATABASE_HOST,
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+      port: parseInt(process.env.DATABASE_PORT, 10),
+      database: process.env.DATABASE_DATABASE,
       extra: {
         options: {
-          encrypt: process.env.DATABSE_ENCRYPT
+          encrypt: (process.env.DATABSE_ENCRYPT === 'true')
         }
       },
       logging: process.env.NODE_ENV === 'development',

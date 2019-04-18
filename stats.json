@@ -4,9 +4,9 @@
   "warnings": [
   ],
   "version": "4.30.0",
-  "hash": "62c9594495b7d488bff4",
-  "time": 48812,
-  "builtAt": 1555561346592,
+  "hash": "e15a13c70a309160377a",
+  "time": 40301,
+  "builtAt": 1555572337174,
   "publicPath": "",
   "outputPath": "C:\\Users\\kmatae\\Source\\rarareserve-api\\dist\\server",
   "assetsByChunkName": {
@@ -33,7 +33,7 @@
     },
     {
       "name": "server.js",
-      "size": 101803,
+      "size": 101927,
       "chunks": [
         "server"
       ],
@@ -128,8 +128,8 @@
           "id": 0,
           "identifier": "multi ./src/server/assets/changeemailconfirm.txt ./src/server/assets/emailconfirm.txt ./src/server/assets/resetpassword.txt",
           "name": "multi ./src/server/assets/changeemailconfirm.txt ./src/server/assets/emailconfirm.txt ./src/server/assets/resetpassword.txt",
-          "index": 61,
-          "index2": 64,
+          "index": 60,
+          "index2": 63,
           "size": 52,
           "built": true,
           "optional": false,
@@ -164,8 +164,8 @@
           "id": "./src/server/assets/changeemailconfirm.txt",
           "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\file-loader\\dist\\cjs.js??ref--6!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\assets\\changeemailconfirm.txt",
           "name": "./src/server/assets/changeemailconfirm.txt",
-          "index": 62,
-          "index2": 61,
+          "index": 61,
+          "index2": 60,
           "size": 45,
           "cacheable": true,
           "built": true,
@@ -211,8 +211,8 @@
           "id": "./src/server/assets/emailconfirm.txt",
           "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\file-loader\\dist\\cjs.js??ref--6!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\assets\\emailconfirm.txt",
           "name": "./src/server/assets/emailconfirm.txt",
-          "index": 63,
-          "index2": 62,
+          "index": 62,
+          "index2": 61,
           "size": 39,
           "cacheable": true,
           "built": true,
@@ -258,8 +258,8 @@
           "id": "./src/server/assets/resetpassword.txt",
           "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\file-loader\\dist\\cjs.js??ref--6!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\assets\\resetpassword.txt",
           "name": "./src/server/assets/resetpassword.txt",
-          "index": 64,
-          "index2": 63,
+          "index": 63,
+          "index2": 62,
           "size": 40,
           "cacheable": true,
           "built": true,
@@ -320,7 +320,7 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 72859,
+      "size": 73196,
       "names": [
         "server"
       ],
@@ -328,7 +328,7 @@
         "server.js",
         "server.js.map"
       ],
-      "hash": "71142cd2799d481c5c6d",
+      "hash": "5e6b7cc0404d02f1a5d2",
       "siblings": [
       ],
       "parents": [
@@ -344,7 +344,7 @@
           "name": "./src/server/app.module.ts",
           "index": 4,
           "index2": 57,
-          "size": 2207,
+          "size": 2623,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -382,7 +382,7 @@
           "optimizationBailout": [
           ],
           "depth": 1,
-          "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst common_1 = require(\"@nestjs/common\");\r\nconst graphql_1 = require(\"@nestjs/graphql\");\r\nconst typeorm_1 = require(\"@nestjs/typeorm\");\r\nconst user_module_1 = require(\"./user/user.module\");\r\nconst user_1 = require(\"./user/user\");\r\nconst signin_module_1 = require(\"./signin/signin.module\");\r\nconst email_module_1 = require(\"./email/email.module\");\r\nconst signup_module_1 = require(\"./signup/signup.module\");\r\nconst env_module_1 = require(\"./env/env.module\");\r\nconst auth_module_1 = require(\"./auth/auth.module\");\r\nconst site_config_module_1 = require(\"./site-config/site-config.module\");\r\nconst site_config_1 = require(\"./site-config/site-config\");\r\nlet AppModule = class AppModule {\r\n};\r\nAppModule = tslib_1.__decorate([\r\n    common_1.Module({\r\n        imports: [\r\n            env_module_1.EnvModule,\r\n            signin_module_1.SigninModule,\r\n            signup_module_1.SignupModule,\r\n            auth_module_1.AuthModule,\r\n            graphql_1.GraphQLModule.forRoot({\r\n                installSubscriptionHandlers: true,\r\n                autoSchemaFile: 'schema.gql',\r\n                context: ({ req }) => ({ req }),\r\n                playground: (process.env.NODE_ENV || 'development') === 'development',\r\n                debug: (process.env.NODE_ENV || 'development') === 'development',\r\n                tracing: (process.env.NODE_ENV || 'development') === 'development'\r\n            }),\r\n            typeorm_1.TypeOrmModule.forRoot({\r\n                type: 'mssql',\r\n                url: process.env.DATABASE_URL,\r\n                logging: process.env.NODE_ENV === 'development',\r\n                migrationsRun: true,\r\n                migrations: [__dirname + '/../db/migrations/**/*.js'],\r\n                entities: [\r\n                    user_1.User,\r\n                    site_config_1.SiteConfig\r\n                ]\r\n            }),\r\n            user_module_1.UserModule,\r\n            email_module_1.EmailModule,\r\n            site_config_module_1.SiteConfigModule\r\n        ],\r\n        providers: [],\r\n        controllers: []\r\n    })\r\n], AppModule);\r\nexports.AppModule = AppModule;\r\n"
+          "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst common_1 = require(\"@nestjs/common\");\r\nconst graphql_1 = require(\"@nestjs/graphql\");\r\nconst typeorm_1 = require(\"@nestjs/typeorm\");\r\nconst user_module_1 = require(\"./user/user.module\");\r\nconst user_1 = require(\"./user/user\");\r\nconst signin_module_1 = require(\"./signin/signin.module\");\r\nconst email_module_1 = require(\"./email/email.module\");\r\nconst signup_module_1 = require(\"./signup/signup.module\");\r\nconst env_module_1 = require(\"./env/env.module\");\r\nconst auth_module_1 = require(\"./auth/auth.module\");\r\nconst site_config_module_1 = require(\"./site-config/site-config.module\");\r\nconst site_config_1 = require(\"./site-config/site-config\");\r\nlet AppModule = class AppModule {\r\n};\r\nAppModule = tslib_1.__decorate([\r\n    common_1.Module({\r\n        imports: [\r\n            env_module_1.EnvModule,\r\n            signin_module_1.SigninModule,\r\n            signup_module_1.SignupModule,\r\n            auth_module_1.AuthModule,\r\n            graphql_1.GraphQLModule.forRoot({\r\n                installSubscriptionHandlers: true,\r\n                autoSchemaFile: 'schema.gql',\r\n                context: ({ req }) => ({ req }),\r\n                playground: (process.env.NODE_ENV || 'development') === 'development',\r\n                debug: (process.env.NODE_ENV || 'development') === 'development',\r\n                tracing: (process.env.NODE_ENV || 'development') === 'development'\r\n            }),\r\n            typeorm_1.TypeOrmModule.forRoot({\r\n                type: 'mssql',\r\n                host: process.env.DATABASE_HOST,\r\n                username: process.env.DATABASE_USERNAME,\r\n                password: process.env.DATABASE_PASSWORD,\r\n                port: parseInt(process.env.DATABASE_PORT, 10),\r\n                database: process.env.DATABASE_DATABASE,\r\n                extra: {\r\n                    options: {\r\n                        encrypt: (process.env.DATABSE_ENCRYPT === 'true')\r\n                    }\r\n                },\r\n                logging: process.env.NODE_ENV === 'development',\r\n                migrationsRun: true,\r\n                migrations: [__dirname + '/../db/migrations/**/*.js'],\r\n                entities: [\r\n                    user_1.User,\r\n                    site_config_1.SiteConfig\r\n                ]\r\n            }),\r\n            user_module_1.UserModule,\r\n            email_module_1.EmailModule,\r\n            site_config_module_1.SiteConfigModule\r\n        ],\r\n        providers: [],\r\n        controllers: []\r\n    })\r\n], AppModule);\r\nexports.AppModule = AppModule;\r\n"
         },
         {
           "id": "./src/server/auth/auth.module.ts",
@@ -1006,8 +1006,8 @@
           "id": "./src/server/init.data.setup.ts",
           "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\init.data.setup.ts",
           "name": "./src/server/init.data.setup.ts",
-          "index": 60,
-          "index2": 59,
+          "index": 59,
+          "index2": 58,
           "size": 2060,
           "cacheable": true,
           "built": true,
@@ -1039,7 +1039,7 @@
               "moduleName": "./src/server/main.ts",
               "type": "cjs require",
               "userRequest": "./init.data.setup",
-              "loc": "8:26-54"
+              "loc": "7:26-54"
             }
           ],
           "providedExports": null,
@@ -1053,8 +1053,8 @@
           "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\main.ts",
           "name": "./src/server/main.ts",
           "index": 0,
-          "index2": 60,
-          "size": 730,
+          "index2": 59,
+          "size": 693,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1086,7 +1086,7 @@
           "optimizationBailout": [
           ],
           "depth": 0,
-          "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst core_1 = require(\"@nestjs/core\");\r\nconst helmet = require(\"helmet\");\r\nconst app_module_1 = require(\"./app.module\");\r\nconst process = require(\"process\");\r\nconst init_data_setup_1 = require(\"./init.data.setup\");\r\nfunction bootstrap() {\r\n    return tslib_1.__awaiter(this, void 0, void 0, function* () {\r\n        const app = yield core_1.NestFactory.create(app_module_1.AppModule);\r\n        app.use(helmet());\r\n        // 初期値を設定する\r\n        const initDataSetup = new init_data_setup_1.InitDataSetup();\r\n        initDataSetup.setup();\r\n        yield app.listen(process.env.PORT || 3000);\r\n    });\r\n}\r\nbootstrap();\r\n"
+          "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst core_1 = require(\"@nestjs/core\");\r\nconst helmet = require(\"helmet\");\r\nconst app_module_1 = require(\"./app.module\");\r\nconst init_data_setup_1 = require(\"./init.data.setup\");\r\nfunction bootstrap() {\r\n    return tslib_1.__awaiter(this, void 0, void 0, function* () {\r\n        const app = yield core_1.NestFactory.create(app_module_1.AppModule);\r\n        app.use(helmet());\r\n        // 初期値を設定する\r\n        const initDataSetup = new init_data_setup_1.InitDataSetup();\r\n        initDataSetup.setup();\r\n        yield app.listen(process.env.PORT || 3000);\r\n    });\r\n}\r\nbootstrap();\r\n"
         },
         {
           "id": "./src/server/signin/dto/signin-result.dto.ts",
@@ -3705,9 +3705,9 @@
           "chunks": [
             "server"
           ],
-          "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
-          "issuerId": "./src/server/auth/auth.service.ts",
-          "issuerName": "./src/server/auth/auth.service.ts",
+          "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
+          "issuerId": "./src/server/user/user.service.ts",
+          "issuerName": "./src/server/user/user.service.ts",
           "issuerPath": [
             {
               "id": "./src/server/main.ts",
@@ -3720,14 +3720,14 @@
               "name": "./src/server/app.module.ts"
             },
             {
-              "id": "./src/server/auth/auth.module.ts",
-              "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.module.ts",
-              "name": "./src/server/auth/auth.module.ts"
+              "id": "./src/server/user/user.module.ts",
+              "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.module.ts",
+              "name": "./src/server/user/user.module.ts"
             },
             {
-              "id": "./src/server/auth/auth.service.ts",
-              "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
-              "name": "./src/server/auth/auth.service.ts"
+              "id": "./src/server/user/user.service.ts",
+              "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
+              "name": "./src/server/user/user.service.ts"
             }
           ],
           "failed": false,
@@ -3985,50 +3985,6 @@
           "optimizationBailout": [
           ],
           "depth": 4
-        },
-        {
-          "id": "process",
-          "identifier": "external \"process\"",
-          "name": "external \"process\"",
-          "index": 59,
-          "index2": 58,
-          "size": 42,
-          "built": true,
-          "optional": false,
-          "prefetched": false,
-          "chunks": [
-            "server"
-          ],
-          "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\main.ts",
-          "issuerId": "./src/server/main.ts",
-          "issuerName": "./src/server/main.ts",
-          "issuerPath": [
-            {
-              "id": "./src/server/main.ts",
-              "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\main.ts",
-              "name": "./src/server/main.ts"
-            }
-          ],
-          "failed": false,
-          "errors": 0,
-          "warnings": 0,
-          "assets": [
-          ],
-          "reasons": [
-            {
-              "moduleId": "./src/server/main.ts",
-              "moduleIdentifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\main.ts",
-              "module": "./src/server/main.ts",
-              "moduleName": "./src/server/main.ts",
-              "type": "cjs require",
-              "userRequest": "process",
-              "loc": "7:16-34"
-            }
-          ],
-          "providedExports": null,
-          "optimizationBailout": [
-          ],
-          "depth": 1
         },
         {
           "id": "reflect-metadata",
@@ -5025,8 +4981,8 @@
       "id": 0,
       "identifier": "multi ./src/server/assets/changeemailconfirm.txt ./src/server/assets/emailconfirm.txt ./src/server/assets/resetpassword.txt",
       "name": "multi ./src/server/assets/changeemailconfirm.txt ./src/server/assets/emailconfirm.txt ./src/server/assets/resetpassword.txt",
-      "index": 61,
-      "index2": 64,
+      "index": 60,
+      "index2": 63,
       "size": 52,
       "built": true,
       "optional": false,
@@ -5063,7 +5019,7 @@
       "name": "./src/server/app.module.ts",
       "index": 4,
       "index2": 57,
-      "size": 2207,
+      "size": 2623,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -5101,14 +5057,14 @@
       "optimizationBailout": [
       ],
       "depth": 1,
-      "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst common_1 = require(\"@nestjs/common\");\r\nconst graphql_1 = require(\"@nestjs/graphql\");\r\nconst typeorm_1 = require(\"@nestjs/typeorm\");\r\nconst user_module_1 = require(\"./user/user.module\");\r\nconst user_1 = require(\"./user/user\");\r\nconst signin_module_1 = require(\"./signin/signin.module\");\r\nconst email_module_1 = require(\"./email/email.module\");\r\nconst signup_module_1 = require(\"./signup/signup.module\");\r\nconst env_module_1 = require(\"./env/env.module\");\r\nconst auth_module_1 = require(\"./auth/auth.module\");\r\nconst site_config_module_1 = require(\"./site-config/site-config.module\");\r\nconst site_config_1 = require(\"./site-config/site-config\");\r\nlet AppModule = class AppModule {\r\n};\r\nAppModule = tslib_1.__decorate([\r\n    common_1.Module({\r\n        imports: [\r\n            env_module_1.EnvModule,\r\n            signin_module_1.SigninModule,\r\n            signup_module_1.SignupModule,\r\n            auth_module_1.AuthModule,\r\n            graphql_1.GraphQLModule.forRoot({\r\n                installSubscriptionHandlers: true,\r\n                autoSchemaFile: 'schema.gql',\r\n                context: ({ req }) => ({ req }),\r\n                playground: (process.env.NODE_ENV || 'development') === 'development',\r\n                debug: (process.env.NODE_ENV || 'development') === 'development',\r\n                tracing: (process.env.NODE_ENV || 'development') === 'development'\r\n            }),\r\n            typeorm_1.TypeOrmModule.forRoot({\r\n                type: 'mssql',\r\n                url: process.env.DATABASE_URL,\r\n                logging: process.env.NODE_ENV === 'development',\r\n                migrationsRun: true,\r\n                migrations: [__dirname + '/../db/migrations/**/*.js'],\r\n                entities: [\r\n                    user_1.User,\r\n                    site_config_1.SiteConfig\r\n                ]\r\n            }),\r\n            user_module_1.UserModule,\r\n            email_module_1.EmailModule,\r\n            site_config_module_1.SiteConfigModule\r\n        ],\r\n        providers: [],\r\n        controllers: []\r\n    })\r\n], AppModule);\r\nexports.AppModule = AppModule;\r\n"
+      "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst common_1 = require(\"@nestjs/common\");\r\nconst graphql_1 = require(\"@nestjs/graphql\");\r\nconst typeorm_1 = require(\"@nestjs/typeorm\");\r\nconst user_module_1 = require(\"./user/user.module\");\r\nconst user_1 = require(\"./user/user\");\r\nconst signin_module_1 = require(\"./signin/signin.module\");\r\nconst email_module_1 = require(\"./email/email.module\");\r\nconst signup_module_1 = require(\"./signup/signup.module\");\r\nconst env_module_1 = require(\"./env/env.module\");\r\nconst auth_module_1 = require(\"./auth/auth.module\");\r\nconst site_config_module_1 = require(\"./site-config/site-config.module\");\r\nconst site_config_1 = require(\"./site-config/site-config\");\r\nlet AppModule = class AppModule {\r\n};\r\nAppModule = tslib_1.__decorate([\r\n    common_1.Module({\r\n        imports: [\r\n            env_module_1.EnvModule,\r\n            signin_module_1.SigninModule,\r\n            signup_module_1.SignupModule,\r\n            auth_module_1.AuthModule,\r\n            graphql_1.GraphQLModule.forRoot({\r\n                installSubscriptionHandlers: true,\r\n                autoSchemaFile: 'schema.gql',\r\n                context: ({ req }) => ({ req }),\r\n                playground: (process.env.NODE_ENV || 'development') === 'development',\r\n                debug: (process.env.NODE_ENV || 'development') === 'development',\r\n                tracing: (process.env.NODE_ENV || 'development') === 'development'\r\n            }),\r\n            typeorm_1.TypeOrmModule.forRoot({\r\n                type: 'mssql',\r\n                host: process.env.DATABASE_HOST,\r\n                username: process.env.DATABASE_USERNAME,\r\n                password: process.env.DATABASE_PASSWORD,\r\n                port: parseInt(process.env.DATABASE_PORT, 10),\r\n                database: process.env.DATABASE_DATABASE,\r\n                extra: {\r\n                    options: {\r\n                        encrypt: (process.env.DATABSE_ENCRYPT === 'true')\r\n                    }\r\n                },\r\n                logging: process.env.NODE_ENV === 'development',\r\n                migrationsRun: true,\r\n                migrations: [__dirname + '/../db/migrations/**/*.js'],\r\n                entities: [\r\n                    user_1.User,\r\n                    site_config_1.SiteConfig\r\n                ]\r\n            }),\r\n            user_module_1.UserModule,\r\n            email_module_1.EmailModule,\r\n            site_config_module_1.SiteConfigModule\r\n        ],\r\n        providers: [],\r\n        controllers: []\r\n    })\r\n], AppModule);\r\nexports.AppModule = AppModule;\r\n"
     },
     {
       "id": "./src/server/assets/changeemailconfirm.txt",
       "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\file-loader\\dist\\cjs.js??ref--6!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\assets\\changeemailconfirm.txt",
       "name": "./src/server/assets/changeemailconfirm.txt",
-      "index": 62,
-      "index2": 61,
+      "index": 61,
+      "index2": 60,
       "size": 45,
       "cacheable": true,
       "built": true,
@@ -5154,8 +5110,8 @@
       "id": "./src/server/assets/emailconfirm.txt",
       "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\file-loader\\dist\\cjs.js??ref--6!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\assets\\emailconfirm.txt",
       "name": "./src/server/assets/emailconfirm.txt",
-      "index": 63,
-      "index2": 62,
+      "index": 62,
+      "index2": 61,
       "size": 39,
       "cacheable": true,
       "built": true,
@@ -5201,8 +5157,8 @@
       "id": "./src/server/assets/resetpassword.txt",
       "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\file-loader\\dist\\cjs.js??ref--6!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\assets\\resetpassword.txt",
       "name": "./src/server/assets/resetpassword.txt",
-      "index": 64,
-      "index2": 63,
+      "index": 63,
+      "index2": 62,
       "size": 40,
       "cacheable": true,
       "built": true,
@@ -5866,8 +5822,8 @@
       "id": "./src/server/init.data.setup.ts",
       "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\init.data.setup.ts",
       "name": "./src/server/init.data.setup.ts",
-      "index": 60,
-      "index2": 59,
+      "index": 59,
+      "index2": 58,
       "size": 2060,
       "cacheable": true,
       "built": true,
@@ -5899,7 +5855,7 @@
           "moduleName": "./src/server/main.ts",
           "type": "cjs require",
           "userRequest": "./init.data.setup",
-          "loc": "8:26-54"
+          "loc": "7:26-54"
         }
       ],
       "providedExports": null,
@@ -5913,8 +5869,8 @@
       "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\main.ts",
       "name": "./src/server/main.ts",
       "index": 0,
-      "index2": 60,
-      "size": 730,
+      "index2": 59,
+      "size": 693,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -5946,7 +5902,7 @@
       "optimizationBailout": [
       ],
       "depth": 0,
-      "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst core_1 = require(\"@nestjs/core\");\r\nconst helmet = require(\"helmet\");\r\nconst app_module_1 = require(\"./app.module\");\r\nconst process = require(\"process\");\r\nconst init_data_setup_1 = require(\"./init.data.setup\");\r\nfunction bootstrap() {\r\n    return tslib_1.__awaiter(this, void 0, void 0, function* () {\r\n        const app = yield core_1.NestFactory.create(app_module_1.AppModule);\r\n        app.use(helmet());\r\n        // 初期値を設定する\r\n        const initDataSetup = new init_data_setup_1.InitDataSetup();\r\n        initDataSetup.setup();\r\n        yield app.listen(process.env.PORT || 3000);\r\n    });\r\n}\r\nbootstrap();\r\n"
+      "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst core_1 = require(\"@nestjs/core\");\r\nconst helmet = require(\"helmet\");\r\nconst app_module_1 = require(\"./app.module\");\r\nconst init_data_setup_1 = require(\"./init.data.setup\");\r\nfunction bootstrap() {\r\n    return tslib_1.__awaiter(this, void 0, void 0, function* () {\r\n        const app = yield core_1.NestFactory.create(app_module_1.AppModule);\r\n        app.use(helmet());\r\n        // 初期値を設定する\r\n        const initDataSetup = new init_data_setup_1.InitDataSetup();\r\n        initDataSetup.setup();\r\n        yield app.listen(process.env.PORT || 3000);\r\n    });\r\n}\r\nbootstrap();\r\n"
     },
     {
       "id": "./src/server/signin/dto/signin-result.dto.ts",
@@ -8565,9 +8521,9 @@
       "chunks": [
         "server"
       ],
-      "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
-      "issuerId": "./src/server/auth/auth.service.ts",
-      "issuerName": "./src/server/auth/auth.service.ts",
+      "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
+      "issuerId": "./src/server/user/user.service.ts",
+      "issuerName": "./src/server/user/user.service.ts",
       "issuerPath": [
         {
           "id": "./src/server/main.ts",
@@ -8580,14 +8536,14 @@
           "name": "./src/server/app.module.ts"
         },
         {
-          "id": "./src/server/auth/auth.module.ts",
-          "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.module.ts",
-          "name": "./src/server/auth/auth.module.ts"
+          "id": "./src/server/user/user.module.ts",
+          "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.module.ts",
+          "name": "./src/server/user/user.module.ts"
         },
         {
-          "id": "./src/server/auth/auth.service.ts",
-          "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
-          "name": "./src/server/auth/auth.service.ts"
+          "id": "./src/server/user/user.service.ts",
+          "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
+          "name": "./src/server/user/user.service.ts"
         }
       ],
       "failed": false,
@@ -8845,50 +8801,6 @@
       "optimizationBailout": [
       ],
       "depth": 4
-    },
-    {
-      "id": "process",
-      "identifier": "external \"process\"",
-      "name": "external \"process\"",
-      "index": 59,
-      "index2": 58,
-      "size": 42,
-      "built": true,
-      "optional": false,
-      "prefetched": false,
-      "chunks": [
-        "server"
-      ],
-      "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\main.ts",
-      "issuerId": "./src/server/main.ts",
-      "issuerName": "./src/server/main.ts",
-      "issuerPath": [
-        {
-          "id": "./src/server/main.ts",
-          "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\main.ts",
-          "name": "./src/server/main.ts"
-        }
-      ],
-      "failed": false,
-      "errors": 0,
-      "warnings": 0,
-      "assets": [
-      ],
-      "reasons": [
-        {
-          "moduleId": "./src/server/main.ts",
-          "moduleIdentifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\main.ts",
-          "module": "./src/server/main.ts",
-          "moduleName": "./src/server/main.ts",
-          "type": "cjs require",
-          "userRequest": "process",
-          "loc": "7:16-34"
-        }
-      ],
-      "providedExports": null,
-      "optimizationBailout": [
-      ],
-      "depth": 1
     },
     {
       "id": "reflect-metadata",
