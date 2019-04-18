@@ -5,8 +5,8 @@
   ],
   "version": "4.30.0",
   "hash": "e15a13c70a309160377a",
-  "time": 40301,
-  "builtAt": 1555572337174,
+  "time": 28113,
+  "builtAt": 1555574281644,
   "publicPath": "",
   "outputPath": "C:\\Users\\kmatae\\Source\\rarareserve-api\\dist\\server",
   "assetsByChunkName": {
@@ -3705,9 +3705,9 @@
           "chunks": [
             "server"
           ],
-          "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
-          "issuerId": "./src/server/user/user.service.ts",
-          "issuerName": "./src/server/user/user.service.ts",
+          "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
+          "issuerId": "./src/server/auth/auth.service.ts",
+          "issuerName": "./src/server/auth/auth.service.ts",
           "issuerPath": [
             {
               "id": "./src/server/main.ts",
@@ -3720,14 +3720,14 @@
               "name": "./src/server/app.module.ts"
             },
             {
-              "id": "./src/server/user/user.module.ts",
-              "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.module.ts",
-              "name": "./src/server/user/user.module.ts"
+              "id": "./src/server/auth/auth.module.ts",
+              "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.module.ts",
+              "name": "./src/server/auth/auth.module.ts"
             },
             {
-              "id": "./src/server/user/user.service.ts",
-              "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
-              "name": "./src/server/user/user.service.ts"
+              "id": "./src/server/auth/auth.service.ts",
+              "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
+              "name": "./src/server/auth/auth.service.ts"
             }
           ],
           "failed": false,
@@ -8521,9 +8521,9 @@
       "chunks": [
         "server"
       ],
-      "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
-      "issuerId": "./src/server/user/user.service.ts",
-      "issuerName": "./src/server/user/user.service.ts",
+      "issuer": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
+      "issuerId": "./src/server/auth/auth.service.ts",
+      "issuerName": "./src/server/auth/auth.service.ts",
       "issuerPath": [
         {
           "id": "./src/server/main.ts",
@@ -8536,14 +8536,14 @@
           "name": "./src/server/app.module.ts"
         },
         {
-          "id": "./src/server/user/user.module.ts",
-          "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.module.ts",
-          "name": "./src/server/user/user.module.ts"
+          "id": "./src/server/auth/auth.module.ts",
+          "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.module.ts",
+          "name": "./src/server/auth/auth.module.ts"
         },
         {
-          "id": "./src/server/user/user.service.ts",
-          "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
-          "name": "./src/server/user/user.service.ts"
+          "id": "./src/server/auth/auth.service.ts",
+          "identifier": "C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\kmatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
+          "name": "./src/server/auth/auth.service.ts"
         }
       ],
       "failed": false,
