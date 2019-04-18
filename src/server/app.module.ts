@@ -28,6 +28,11 @@ import { SiteConfig } from './site-config/site-config';
     TypeOrmModule.forRoot({
       type: 'mssql',
       url: process.env.DATABASE_URL,
+      extra: {
+        options: {
+          encrypt: process.env.DATABSE_ENCRYPT
+        }
+      },
       logging: process.env.NODE_ENV === 'development',
       migrationsRun: true,
       migrations: [ __dirname + '/../db/migrations/**/*.js'],

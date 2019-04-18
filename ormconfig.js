@@ -2,11 +2,6 @@ module.exports = [
     {
         "type": "mssql",
         "url": process.env.DATABASE_URL,
-        "extra": {
-            "options": {
-                "encrypt": process.env.DATABASE_ENCRYPT
-            }
-        },
         "synchronize": false,
         "migrationsRun": true,
         "logging": true,
