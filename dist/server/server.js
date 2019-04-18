@@ -128,7 +128,16 @@ AppModule = tslib_1.__decorate([
             }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'mssql',
-                url: process.env.DATABASE_URL,
+                host: process.env.DATABASE_HOST,
+                username: process.env.DATABASE_USERNAME,
+                password: process.env.DATABASE_PASSWORD,
+                port: parseInt(process.env.DATABASE_PORT, 10),
+                database: process.env.DATABASE_DATABASE,
+                extra: {
+                    options: {
+                        encrypt: (process.env.DATABSE_ENCRYPT === 'true')
+                    }
+                },
                 logging: "development" === 'development',
                 migrationsRun: true,
                 migrations: [__dirname + '/../db/migrations/**/*.js'],
@@ -729,7 +738,6 @@ const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
 const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
 const helmet = __webpack_require__(/*! helmet */ "helmet");
 const app_module_1 = __webpack_require__(/*! ./app.module */ "./src/server/app.module.ts");
-const process = __webpack_require__(/*! process */ "process");
 const init_data_setup_1 = __webpack_require__(/*! ./init.data.setup */ "./src/server/init.data.setup.ts");
 function bootstrap() {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
@@ -2693,17 +2701,6 @@ module.exports = require("jsonwebtoken");
 /***/ (function(module, exports) {
 
 module.exports = require("passport-jwt");
-
-/***/ }),
-
-/***/ "process":
-/*!**************************!*\
-  !*** external "process" ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("process");
 
 /***/ }),
 

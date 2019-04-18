@@ -1,9 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import * as helmet from 'helmet';
-import * as express from 'express';
-import * as path from 'path';
 import { AppModule } from './app.module';
-import * as process from 'process';
 import { InitDataSetup } from './init.data.setup';
 
 async function bootstrap() {

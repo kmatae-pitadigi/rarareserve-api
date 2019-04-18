@@ -1,7 +1,16 @@
 module.exports = [
     {
         "type": "mssql",
-        "url": process.env.DATABASE_URL,
+        "host": process.env.DATABASE_HOST,
+        "username": process.env.DATABASE_USERNAME,
+        "password": process.env.DATABASE_PASSWORD,
+        "port": process.env.DATABASE_PORT,
+        "database": process.env.DATABASE_DATABASE,
+        "extra": {
+            "options": {
+                "encrypt": process.env.DATABASE_ENCRYPY
+            }
+        },
         "synchronize": false,
         "migrationsRun": true,
         "logging": true,
