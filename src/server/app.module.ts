@@ -34,7 +34,7 @@ import { SiteConfig } from './site-config/site-config';
       database: process.env.DATABASE_DATABASE,
       extra: {
         options: {
-          encrypt: process.env.DATABSE_ENCRYPT === 'True'
+          encrypt: true
         }
       },
       logging: process.env.NODE_ENV === 'development',
