@@ -1,11 +1,17 @@
 #! /bin/bash
 
-RES_GROUP=$1 # Resource Group name
-ACR_NAME=$2       # Azure Container Registry registry name
-AKV_NAME=$2       # Azure Key Vault vault name
-
+# Resource Group name
+RES_GROUP=$1
+# Azure Container Registry registry name
+ACR_NAME=$2
+# Azure Key Vault vault name
+AKV_NAME=$2
+# Azure Container Registry Server Name
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $2 --query "loginServer" --output tsv)
+# Azure Container Instance Name
+CONTAINER_NAME=$1-api-$3
 
+# Create Azure Container Instance
 az container create \
     --name $CONTAINER_NAME \
     --resource-group $RES_GROUP \
