@@ -7,8 +7,7 @@
 FROM node:10.15.3
 
 # ポート番号を指定
-ENV PORT 3000
-EXPOSE 3000
+EXPOSE 443
 
 COPY package.json package-lock.json ./
 
