@@ -135,7 +135,7 @@ AppModule = tslib_1.__decorate([
                 database: process.env.DATABASE_DATABASE,
                 extra: {
                     options: {
-                        encrypt: (process.env.DATABSE_ENCRYPT === 'true')
+                        encrypt: process.env.DATABASE_ENCRYPT === 'yes'
                     }
                 },
                 logging: "development" === 'development',
