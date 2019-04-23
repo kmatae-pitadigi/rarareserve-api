@@ -19,10 +19,10 @@ COPY . .
 
 # 環境変数を設定する
 ENV NODE_ENV=production \
-    PORT=443
+    PORT=80
 
 # ポート番号を指定
-EXPOSE 443
+EXPOSE 80
 
 # ビルドする(gulpでサーバー、DBマイグレーションをビルド)
 RUN npm run build
