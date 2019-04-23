@@ -6,9 +6,6 @@
 # 使用するNode.jsのバージョンを設定(ローカル環境に合わせておく)
 FROM node:10.15.3
 
-# ポート番号を指定
-EXPOSE 443
-
 COPY package.json package-lock.json ./
 
 # package.jsonをコンテナにコピーし、必要なパッケージをインストールする
@@ -21,7 +18,11 @@ RUN npm install pm2 -g
 COPY . .
 
 # 環境変数を設定する
-ENV NODE_ENV=production
+ENV NODE_ENV=production \
+    PORT=443
+
+# ポート番号を指定
+EXPOSE 443
 
 # ビルドする(gulpでサーバー、DBマイグレーションをビルド)
 RUN npm run build
