@@ -67,3 +67,7 @@ typings/
 # Secrets.yaml
 secrets.yaml
 secrets.dev.yaml
+
+# Report files
+report.html
+stats.json

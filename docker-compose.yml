@@ -9,5 +9,5 @@ services:
       - 1433:1433
     restart: always
 volumes:
-  skidsdb:
+  rarareserve:
     external: true
