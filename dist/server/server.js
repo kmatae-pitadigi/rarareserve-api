@@ -748,7 +748,7 @@ function bootstrap() {
         initDataSetup.setup();
         const port = parseInt(process.env.PORT, 10) || 3000;
         console.info('rarareserver-api started: NODE_ENV: ' + "development" + ', PORT: ' + port);
-        yield app.listen(process.env.PORT || 3000);
+        yield app.listen(port);
     });
 }
 bootstrap();

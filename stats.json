@@ -4,9 +4,9 @@
   "warnings": [
   ],
   "version": "4.30.0",
-  "hash": "a91b1ccd9e1c2310a537",
-  "time": 32757,
-  "builtAt": 1555993151889,
+  "hash": "9b7105a2cc4e1966a098",
+  "time": 40564,
+  "builtAt": 1556156294764,
   "publicPath": "",
   "outputPath": "C:\\Users\\KMatae\\Source\\rarareserve-api\\dist\\server",
   "assetsByChunkName": {
@@ -33,7 +33,7 @@
     },
     {
       "name": "server.js",
-      "size": 102086,
+      "size": 102066,
       "chunks": [
         "server"
       ],
@@ -320,7 +320,7 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 73362,
+      "size": 73342,
       "names": [
         "server"
       ],
@@ -328,7 +328,7 @@
         "server.js",
         "server.js.map"
       ],
-      "hash": "d6ee62f9e892c337f0c6",
+      "hash": "23aeb035f4a94fe270d4",
       "siblings": [
       ],
       "parents": [
@@ -1054,7 +1054,7 @@
           "name": "./src/server/main.ts",
           "index": 0,
           "index2": 59,
-          "size": 861,
+          "size": 841,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1086,7 +1086,7 @@
           "optimizationBailout": [
           ],
           "depth": 0,
-          "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst core_1 = require(\"@nestjs/core\");\r\nconst helmet = require(\"helmet\");\r\nconst app_module_1 = require(\"./app.module\");\r\nconst init_data_setup_1 = require(\"./init.data.setup\");\r\nfunction bootstrap() {\r\n    return tslib_1.__awaiter(this, void 0, void 0, function* () {\r\n        const app = yield core_1.NestFactory.create(app_module_1.AppModule);\r\n        app.use(helmet());\r\n        // 初期値を設定する\r\n        const initDataSetup = new init_data_setup_1.InitDataSetup();\r\n        initDataSetup.setup();\r\n        const port = parseInt(process.env.PORT, 10) || 3000;\r\n        console.info('rarareserver-api started: NODE_ENV: ' + process.env.NODE_ENV + ', PORT: ' + port);\r\n        yield app.listen(process.env.PORT || 3000);\r\n    });\r\n}\r\nbootstrap();\r\n"
+          "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst core_1 = require(\"@nestjs/core\");\r\nconst helmet = require(\"helmet\");\r\nconst app_module_1 = require(\"./app.module\");\r\nconst init_data_setup_1 = require(\"./init.data.setup\");\r\nfunction bootstrap() {\r\n    return tslib_1.__awaiter(this, void 0, void 0, function* () {\r\n        const app = yield core_1.NestFactory.create(app_module_1.AppModule);\r\n        app.use(helmet());\r\n        // 初期値を設定する\r\n        const initDataSetup = new init_data_setup_1.InitDataSetup();\r\n        initDataSetup.setup();\r\n        const port = parseInt(process.env.PORT, 10) || 3000;\r\n        console.info('rarareserver-api started: NODE_ENV: ' + process.env.NODE_ENV + ', PORT: ' + port);\r\n        yield app.listen(port);\r\n    });\r\n}\r\nbootstrap();\r\n"
         },
         {
           "id": "./src/server/signin/dto/signin-result.dto.ts",
@@ -3705,9 +3705,9 @@
           "chunks": [
             "server"
           ],
-          "issuer": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
-          "issuerId": "./src/server/user/user.service.ts",
-          "issuerName": "./src/server/user/user.service.ts",
+          "issuer": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
+          "issuerId": "./src/server/auth/auth.service.ts",
+          "issuerName": "./src/server/auth/auth.service.ts",
           "issuerPath": [
             {
               "id": "./src/server/main.ts",
@@ -3720,14 +3720,14 @@
               "name": "./src/server/app.module.ts"
             },
             {
-              "id": "./src/server/user/user.module.ts",
-              "identifier": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\user\\user.module.ts",
-              "name": "./src/server/user/user.module.ts"
+              "id": "./src/server/auth/auth.module.ts",
+              "identifier": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.module.ts",
+              "name": "./src/server/auth/auth.module.ts"
             },
             {
-              "id": "./src/server/user/user.service.ts",
-              "identifier": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
-              "name": "./src/server/user/user.service.ts"
+              "id": "./src/server/auth/auth.service.ts",
+              "identifier": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
+              "name": "./src/server/auth/auth.service.ts"
             }
           ],
           "failed": false,
@@ -5870,7 +5870,7 @@
       "name": "./src/server/main.ts",
       "index": 0,
       "index2": 59,
-      "size": 861,
+      "size": 841,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -5902,7 +5902,7 @@
       "optimizationBailout": [
       ],
       "depth": 0,
-      "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst core_1 = require(\"@nestjs/core\");\r\nconst helmet = require(\"helmet\");\r\nconst app_module_1 = require(\"./app.module\");\r\nconst init_data_setup_1 = require(\"./init.data.setup\");\r\nfunction bootstrap() {\r\n    return tslib_1.__awaiter(this, void 0, void 0, function* () {\r\n        const app = yield core_1.NestFactory.create(app_module_1.AppModule);\r\n        app.use(helmet());\r\n        // 初期値を設定する\r\n        const initDataSetup = new init_data_setup_1.InitDataSetup();\r\n        initDataSetup.setup();\r\n        const port = parseInt(process.env.PORT, 10) || 3000;\r\n        console.info('rarareserver-api started: NODE_ENV: ' + process.env.NODE_ENV + ', PORT: ' + port);\r\n        yield app.listen(process.env.PORT || 3000);\r\n    });\r\n}\r\nbootstrap();\r\n"
+      "source": "\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nconst tslib_1 = require(\"tslib\");\r\nconst core_1 = require(\"@nestjs/core\");\r\nconst helmet = require(\"helmet\");\r\nconst app_module_1 = require(\"./app.module\");\r\nconst init_data_setup_1 = require(\"./init.data.setup\");\r\nfunction bootstrap() {\r\n    return tslib_1.__awaiter(this, void 0, void 0, function* () {\r\n        const app = yield core_1.NestFactory.create(app_module_1.AppModule);\r\n        app.use(helmet());\r\n        // 初期値を設定する\r\n        const initDataSetup = new init_data_setup_1.InitDataSetup();\r\n        initDataSetup.setup();\r\n        const port = parseInt(process.env.PORT, 10) || 3000;\r\n        console.info('rarareserver-api started: NODE_ENV: ' + process.env.NODE_ENV + ', PORT: ' + port);\r\n        yield app.listen(port);\r\n    });\r\n}\r\nbootstrap();\r\n"
     },
     {
       "id": "./src/server/signin/dto/signin-result.dto.ts",
@@ -8521,9 +8521,9 @@
       "chunks": [
         "server"
       ],
-      "issuer": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
-      "issuerId": "./src/server/user/user.service.ts",
-      "issuerName": "./src/server/user/user.service.ts",
+      "issuer": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
+      "issuerId": "./src/server/auth/auth.service.ts",
+      "issuerName": "./src/server/auth/auth.service.ts",
       "issuerPath": [
         {
           "id": "./src/server/main.ts",
@@ -8536,14 +8536,14 @@
           "name": "./src/server/app.module.ts"
         },
         {
-          "id": "./src/server/user/user.module.ts",
-          "identifier": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\user\\user.module.ts",
-          "name": "./src/server/user/user.module.ts"
+          "id": "./src/server/auth/auth.module.ts",
+          "identifier": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.module.ts",
+          "name": "./src/server/auth/auth.module.ts"
         },
         {
-          "id": "./src/server/user/user.service.ts",
-          "identifier": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\user\\user.service.ts",
-          "name": "./src/server/user/user.service.ts"
+          "id": "./src/server/auth/auth.service.ts",
+          "identifier": "C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\ts-loader\\index.js??ref--5-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\node_modules\\tslint-loader\\index.js??ref--4-0!C:\\Users\\KMatae\\Source\\rarareserve-api\\src\\server\\auth\\auth.service.ts",
+          "name": "./src/server/auth/auth.service.ts"
         }
       ],
       "failed": false,
