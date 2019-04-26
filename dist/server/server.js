@@ -105,7 +105,6 @@ const user_1 = __webpack_require__(/*! ./user/user */ "./src/server/user/user.ts
 const signin_module_1 = __webpack_require__(/*! ./signin/signin.module */ "./src/server/signin/signin.module.ts");
 const email_module_1 = __webpack_require__(/*! ./email/email.module */ "./src/server/email/email.module.ts");
 const signup_module_1 = __webpack_require__(/*! ./signup/signup.module */ "./src/server/signup/signup.module.ts");
-const env_module_1 = __webpack_require__(/*! ./env/env.module */ "./src/server/env/env.module.ts");
 const auth_module_1 = __webpack_require__(/*! ./auth/auth.module */ "./src/server/auth/auth.module.ts");
 const site_config_module_1 = __webpack_require__(/*! ./site-config/site-config.module */ "./src/server/site-config/site-config.module.ts");
 const site_config_1 = __webpack_require__(/*! ./site-config/site-config */ "./src/server/site-config/site-config.ts");
@@ -114,10 +113,10 @@ let AppModule = class AppModule {
 AppModule = tslib_1.__decorate([
     common_1.Module({
         imports: [
-            env_module_1.EnvModule,
             signin_module_1.SigninModule,
             signup_module_1.SignupModule,
             auth_module_1.AuthModule,
+            site_config_module_1.SiteConfigModule,
             graphql_1.GraphQLModule.forRoot({
                 installSubscriptionHandlers: true,
                 autoSchemaFile: 'schema.gql',
@@ -147,8 +146,7 @@ AppModule = tslib_1.__decorate([
                 ]
             }),
             user_module_1.UserModule,
-            email_module_1.EmailModule,
-            site_config_module_1.SiteConfigModule
+            email_module_1.EmailModule
         ],
         providers: [],
         controllers: []
@@ -458,7 +456,7 @@ let EmailService = class EmailService {
             // サーバー名を取得する
             const serverName = utils_1.Utils.getServerName(_url);
             // サイト設定情報を取得する
-            this.siteConfigService.getSiteConfig()
+            this.siteConfigService.get()
                 .then((_siteConfig) => {
                 // メール確認用のメールを送る
                 const opts = {
@@ -486,153 +484,6 @@ EmailService = tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [site_config_service_1.SiteConfigService])
 ], EmailService);
 exports.EmailService = EmailService;
-
-
-/***/ }),
-
-/***/ "./src/server/env/dto/env-result.dto.ts":
-/*!**********************************************!*\
-  !*** ./src/server/env/dto/env-result.dto.ts ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
-__webpack_require__(/*! reflect-metadata */ "reflect-metadata");
-const type_graphql_1 = __webpack_require__(/*! type-graphql */ "type-graphql");
-let EnvResult = class EnvResult {
-};
-tslib_1.__decorate([
-    type_graphql_1.Field(),
-    tslib_1.__metadata("design:type", String)
-], EnvResult.prototype, "serviceName", void 0);
-EnvResult = tslib_1.__decorate([
-    type_graphql_1.ObjectType()
-], EnvResult);
-exports.EnvResult = EnvResult;
-
-
-/***/ }),
-
-/***/ "./src/server/env/env.module.ts":
-/*!**************************************!*\
-  !*** ./src/server/env/env.module.ts ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const env_service_1 = __webpack_require__(/*! ./env.service */ "./src/server/env/env.service.ts");
-const env_resolver_1 = __webpack_require__(/*! ./env.resolver */ "./src/server/env/env.resolver.ts");
-const site_config_module_1 = __webpack_require__(/*! ../site-config/site-config.module */ "./src/server/site-config/site-config.module.ts");
-let EnvModule = class EnvModule {
-};
-EnvModule = tslib_1.__decorate([
-    common_1.Module({
-        imports: [
-            site_config_module_1.SiteConfigModule
-        ],
-        providers: [
-            env_service_1.EnvService,
-            env_resolver_1.EnvResolver
-        ]
-    })
-], EnvModule);
-exports.EnvModule = EnvModule;
-
-
-/***/ }),
-
-/***/ "./src/server/env/env.resolver.ts":
-/*!****************************************!*\
-  !*** ./src/server/env/env.resolver.ts ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
-__webpack_require__(/*! reflect-metadata */ "reflect-metadata");
-const graphql_1 = __webpack_require__(/*! @nestjs/graphql */ "@nestjs/graphql");
-const env_service_1 = __webpack_require__(/*! ./env.service */ "./src/server/env/env.service.ts");
-const env_result_dto_1 = __webpack_require__(/*! ./dto/env-result.dto */ "./src/server/env/dto/env-result.dto.ts");
-let EnvResolver = class EnvResolver {
-    constructor(envService) {
-        this.envService = envService;
-    }
-    env(id) {
-        return new Promise((resolve, reject) => {
-            this.envService.getEnv()
-                .then((envResult) => {
-                resolve(envResult);
-            })
-                .catch((err) => {
-                reject(err);
-            });
-        });
-    }
-};
-tslib_1.__decorate([
-    graphql_1.Query(returns => env_result_dto_1.EnvResult),
-    tslib_1.__param(0, graphql_1.Args('id')),
-    tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [String]),
-    tslib_1.__metadata("design:returntype", Promise)
-], EnvResolver.prototype, "env", null);
-EnvResolver = tslib_1.__decorate([
-    graphql_1.Resolver(of => env_result_dto_1.EnvResult),
-    tslib_1.__metadata("design:paramtypes", [env_service_1.EnvService])
-], EnvResolver);
-exports.EnvResolver = EnvResolver;
-
-
-/***/ }),
-
-/***/ "./src/server/env/env.service.ts":
-/*!***************************************!*\
-  !*** ./src/server/env/env.service.ts ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const site_config_service_1 = __webpack_require__(/*! ../site-config/site-config.service */ "./src/server/site-config/site-config.service.ts");
-let EnvService = class EnvService {
-    constructor(siteConfigService) {
-        this.siteConfigService = siteConfigService;
-    }
-    getEnv() {
-        return new Promise((resolve, reject) => {
-            this.siteConfigService.getSiteConfig()
-                .then((_siteConfig) => {
-                resolve({
-                    serviceName: _siteConfig.name
-                });
-            })
-                .catch((err) => {
-                reject(err);
-            });
-        });
-    }
-};
-EnvService = tslib_1.__decorate([
-    common_1.Injectable(),
-    tslib_1.__metadata("design:paramtypes", [site_config_service_1.SiteConfigService])
-], EnvService);
-exports.EnvService = EnvService;
 
 
 /***/ }),
@@ -1625,6 +1476,72 @@ exports.SignupService = SignupService;
 
 /***/ }),
 
+/***/ "./src/server/site-config/dto/site-config-result.dto.ts":
+/*!**************************************************************!*\
+  !*** ./src/server/site-config/dto/site-config-result.dto.ts ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+__webpack_require__(/*! reflect-metadata */ "reflect-metadata");
+const type_graphql_1 = __webpack_require__(/*! type-graphql */ "type-graphql");
+let SiteConfigResult = class SiteConfigResult {
+};
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", Boolean)
+], SiteConfigResult.prototype, "result", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", String)
+], SiteConfigResult.prototype, "message", void 0);
+SiteConfigResult = tslib_1.__decorate([
+    type_graphql_1.ObjectType()
+], SiteConfigResult);
+exports.SiteConfigResult = SiteConfigResult;
+
+
+/***/ }),
+
+/***/ "./src/server/site-config/dto/site-config.dto.ts":
+/*!*******************************************************!*\
+  !*** ./src/server/site-config/dto/site-config.dto.ts ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+__webpack_require__(/*! reflect-metadata */ "reflect-metadata");
+const type_graphql_1 = __webpack_require__(/*! type-graphql */ "type-graphql");
+let SiteConfig = class SiteConfig {
+};
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", Number)
+], SiteConfig.prototype, "id", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", String)
+], SiteConfig.prototype, "name", void 0);
+tslib_1.__decorate([
+    type_graphql_1.Field(),
+    tslib_1.__metadata("design:type", String)
+], SiteConfig.prototype, "email", void 0);
+SiteConfig = tslib_1.__decorate([
+    type_graphql_1.ObjectType()
+], SiteConfig);
+exports.SiteConfig = SiteConfig;
+
+
+/***/ }),
+
 /***/ "./src/server/site-config/site-config.module.ts":
 /*!******************************************************!*\
   !*** ./src/server/site-config/site-config.module.ts ***!
@@ -1640,6 +1557,7 @@ const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const typeorm_1 = __webpack_require__(/*! @nestjs/typeorm */ "@nestjs/typeorm");
 const site_config_service_1 = __webpack_require__(/*! ./site-config.service */ "./src/server/site-config/site-config.service.ts");
 const site_config_1 = __webpack_require__(/*! ./site-config */ "./src/server/site-config/site-config.ts");
+const site_config_resolver_1 = __webpack_require__(/*! ./site-config.resolver */ "./src/server/site-config/site-config.resolver.ts");
 let SiteConfigModule = class SiteConfigModule {
 };
 SiteConfigModule = tslib_1.__decorate([
@@ -1648,7 +1566,8 @@ SiteConfigModule = tslib_1.__decorate([
             typeorm_1.TypeOrmModule.forFeature([site_config_1.SiteConfig])
         ],
         providers: [
-            site_config_service_1.SiteConfigService
+            site_config_service_1.SiteConfigService,
+            site_config_resolver_1.SiteConfigResolver
         ],
         exports: [
             site_config_service_1.SiteConfigService
@@ -1656,6 +1575,73 @@ SiteConfigModule = tslib_1.__decorate([
     })
 ], SiteConfigModule);
 exports.SiteConfigModule = SiteConfigModule;
+
+
+/***/ }),
+
+/***/ "./src/server/site-config/site-config.resolver.ts":
+/*!********************************************************!*\
+  !*** ./src/server/site-config/site-config.resolver.ts ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const graphql_1 = __webpack_require__(/*! @nestjs/graphql */ "@nestjs/graphql");
+const site_config_service_1 = __webpack_require__(/*! ./site-config.service */ "./src/server/site-config/site-config.service.ts");
+const site_config_dto_1 = __webpack_require__(/*! ./dto/site-config.dto */ "./src/server/site-config/dto/site-config.dto.ts");
+const site_config_result_dto_1 = __webpack_require__(/*! ./dto/site-config-result.dto */ "./src/server/site-config/dto/site-config-result.dto.ts");
+let SiteConfigResolver = class SiteConfigResolver {
+    constructor(siteConfigService) {
+        this.siteConfigService = siteConfigService;
+    }
+    get() {
+        return new Promise((resolve, reject) => {
+            this.siteConfigService.get()
+                .then((siteConfig) => {
+                resolve(siteConfig);
+            })
+                .catch((err) => {
+                reject(err);
+            });
+        });
+    }
+    save(_siteConfig) {
+        return new Promise((resolve, reject) => {
+            this.siteConfigService.save(_siteConfig)
+                .then((_siteConfigResult) => {
+                resolve({
+                    result: true,
+                    message: ''
+                });
+            })
+                .catch((err) => {
+                reject(err);
+            });
+        });
+    }
+};
+tslib_1.__decorate([
+    graphql_1.Query(returns => site_config_dto_1.SiteConfig),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", []),
+    tslib_1.__metadata("design:returntype", Promise)
+], SiteConfigResolver.prototype, "get", null);
+tslib_1.__decorate([
+    graphql_1.Mutation(returns => site_config_result_dto_1.SiteConfigResult),
+    tslib_1.__param(0, graphql_1.Args('siteconfig')),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [site_config_dto_1.SiteConfig]),
+    tslib_1.__metadata("design:returntype", Promise)
+], SiteConfigResolver.prototype, "save", null);
+SiteConfigResolver = tslib_1.__decorate([
+    graphql_1.Resolver(of => site_config_dto_1.SiteConfig),
+    tslib_1.__metadata("design:paramtypes", [site_config_service_1.SiteConfigService])
+], SiteConfigResolver);
+exports.SiteConfigResolver = SiteConfigResolver;
 
 
 /***/ }),
@@ -1679,11 +1665,27 @@ let SiteConfigService = class SiteConfigService {
     constructor(siteConfigRepogitory) {
         this.siteConfigRepogitory = siteConfigRepogitory;
     }
-    getSiteConfig() {
+    get() {
         return new Promise((resolve, reject) => {
             this.siteConfigRepogitory.findOne(1)
                 .then((siteConfig) => {
                 resolve(siteConfig);
+            })
+                .catch((err) => {
+                reject(err);
+            });
+        });
+    }
+    save(_siteConfig) {
+        return new Promise((resolve, reject) => {
+            // idは必ず1固定とする
+            _siteConfig.id = 1;
+            this.siteConfigRepogitory.save(_siteConfig)
+                .then((_saveSiteConfig) => {
+                resolve({
+                    result: true,
+                    message: ''
+                });
             })
                 .catch((err) => {
                 reject(err);

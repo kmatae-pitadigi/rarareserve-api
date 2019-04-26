@@ -6,17 +6,16 @@ import { User } from './user/user';
 import { SigninModule } from './signin/signin.module';
 import { EmailModule } from './email/email.module';
 import { SignupModule } from './signup/signup.module';
-import { EnvModule } from './env/env.module';
 import { AuthModule } from './auth/auth.module';
 import { SiteConfigModule } from './site-config/site-config.module';
 import { SiteConfig } from './site-config/site-config';
 
 @Module({
   imports: [
-    EnvModule,
     SigninModule,
     SignupModule,
     AuthModule,
+    SiteConfigModule,
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,
       autoSchemaFile: 'schema.gql',
@@ -46,8 +45,7 @@ import { SiteConfig } from './site-config/site-config';
       ]
     }),
     UserModule,
-    EmailModule,
-    SiteConfigModule
+    EmailModule
   ],
 
   providers: [

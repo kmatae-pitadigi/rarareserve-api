@@ -89,7 +89,7 @@ export class EmailService {
             const serverName: string = Utils.getServerName(_url);
 
             // サイト設定情報を取得する
-            this.siteConfigService.getSiteConfig()
+            this.siteConfigService.get()
             .then((_siteConfig: ISiteConfig) => {
                 // メール確認用のメールを送る
                 const opts: IEmailOptions = {
