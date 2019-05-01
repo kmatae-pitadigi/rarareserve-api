@@ -74,3 +74,6 @@ stats.json
 
 # dist
 dist/
+
+# Graphql schema file
+schema.gql
