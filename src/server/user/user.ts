@@ -66,9 +66,9 @@ export class User implements IUser {
     password: string;
 
     /**
-     * 管理者
+     * ロール
      * 2: システム管理者
-     * 1: 管理者
+     * 1: スタッフ
      * 0: 一般
      */
     @Field()
@@ -113,5 +113,6 @@ export class User implements IUser {
      *  1: 女性
      */
     @Field()
+    @Column()
     sex: number;
 }

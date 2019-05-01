@@ -42,7 +42,10 @@ export class AuthService {
                         if (match === true)
                         {
                             // JWTを作成する
-                            const jwtPayload: IJwtPayload = { email: _email };
+                            const jwtPayload: IJwtPayload = {
+                                email: _email,
+                                role: user.role
+                            };
                             const signopt: SignOptions = {
                                 algorithm: 'RS256',
                                 expiresIn: '24h',

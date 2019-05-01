@@ -78,22 +78,23 @@ export class EmailService {
      * @param _path 認証パス名
      * @param _email 送信先メールアドレス
      * @param _url 要求元URL
+     * @param _role ユーザ権限
      * @returns true:成功
      */
     sendTokenMail(_format: string, _path: string, _email: string, _url: string): Promise<boolean> {
         return new Promise((resolve, reject) => {
             // JWTを作成する
-            const token = Utils.getTokenByEmail(_email);
+            const token = Utils.getTokenByEmail(_email, 0);
 
             // サーバー名を取得する
             const serverName: string = Utils.getServerName(_url);
 
             // サイト設定情報を取得する
-            this.siteConfigService.getSiteConfig()
+            this.siteConfigService.get()
             .then((_siteConfig: ISiteConfig) => {
                 // メール確認用のメールを送る
                 const opts: IEmailOptions = {
-                    servicename: _siteConfig.name,
+                    servicename: _siteConfig.sitename,
                     confirmurl: serverName + '/' + _path + '/' + token,
                     url: serverName,
                     email: _siteConfig.email

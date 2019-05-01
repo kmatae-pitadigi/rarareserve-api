@@ -1,5 +1,5 @@
 export interface ISiteConfig {
     id: number;
-    name: string;
+    sitename: string;
     email: string;
 }

@@ -35,7 +35,7 @@ export class InitDataSetup {
         if (!siteconfig) {
             const addSiteConfig: SiteConfig = new SiteConfig();
             addSiteConfig.id = 1;
-            addSiteConfig.name = 'スキッズキャンプ予約サイト';
+            addSiteConfig.sitename = 'スキッズキャンプ予約サイト';
             addSiteConfig.email = 'admin@local';
 
             siteConfigRepository.save(addSiteConfig);

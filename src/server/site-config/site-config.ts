@@ -14,7 +14,7 @@ export class SiteConfig implements ISiteConfig {
 
     @Column()
     @Field()
-    name: string;
+    sitename: string;
 
     @Column()
     @Field()

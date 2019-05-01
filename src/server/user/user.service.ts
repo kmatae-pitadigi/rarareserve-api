@@ -83,8 +83,8 @@ export class UserService {
                     addUser.phone = signup.phone;
                     // パスワードはハッシュ化する
                     addUser.password = this.getPasswordHash(signup.password);
-                    // Eメール確認フラグは1に設定する
-                    addUser.isemailconfirmed = 1;
+                    // Eメール確認フラグは0に設定する
+                    addUser.isemailconfirmed = 0;
                     // ユーザ情報を登録する
                     this.userRepository.save(addUser)
                     .then((result: User) => {

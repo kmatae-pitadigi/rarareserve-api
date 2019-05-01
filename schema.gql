@@ -50,14 +50,11 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
-type EnvResult {
-  serviceName: String!
-}
-
 type Mutation {
   changeemail(changeemail: ChangeEmail!): ChangeEmailResult!
   changepassword(changepassword: ChangePassword!): ChangePasswordResult!
   changeprofile(changeprofile: ChangeProfile!): ChangeProfileResult!
+  savesiteconfig(savesiteconfig: SaveSiteConfig!): SaveSiteConfigResult!
   signin(signin: Signin!): SigninResult!
   signup(signup: Signup!): SignupResult!
   confirmuser(token: String!): ConfirmUserResult!
@@ -68,7 +65,7 @@ type Mutation {
 
 type Query {
   user(email: String!): User!
-  env(id: String!): EnvResult!
+  getsiteconfig(id: Float!): SiteConfig!
 }
 
 input ResendConfirmMail {
@@ -86,6 +83,17 @@ input ResetPassword {
 }
 
 type ResetPasswordResult {
+  result: Boolean!
+  message: String!
+}
+
+input SaveSiteConfig {
+  id: Float!
+  sitename: String!
+  email: String!
+}
+
+type SaveSiteConfigResult {
   result: Boolean!
   message: String!
 }
@@ -128,7 +136,7 @@ type SignupResult {
 
 type SiteConfig {
   id: Float!
-  name: String!
+  sitename: String!
   email: String!
 }
 

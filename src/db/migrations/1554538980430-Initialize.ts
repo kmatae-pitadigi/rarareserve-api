@@ -98,7 +98,7 @@ export class Initialize1554538980430 implements MigrationInterface {
                     isNullable: false
                 },
                 {
-                    name: 'name',
+                    name: 'sitename',
                     type: 'nvarchar(255)',
                     isNullable: false
                 },

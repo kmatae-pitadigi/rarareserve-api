@@ -17,11 +17,11 @@
             "name": "nodemon",
             "runtimeExecutable": "nodemon",
             "program": "${workspaceFolder}\\dist\\server\\server.js",
-            "restart": false,
+            "restart": true,
+            "timeout": 20000,
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "envFile": "${workspaceFolder}\\.env.local",
-            "postDebugTask": "stop node"
+            "envFile": "${workspaceFolder}\\.env.local"
         },
         {
             "type": "node",

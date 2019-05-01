@@ -23,10 +23,13 @@ export class Utils {
      * @param _email: string Eメールアドレス
      * @returns トークン
      */
-    static getTokenByEmail(_email: string): string
+    static getTokenByEmail(_email: string, _role: number): string
     {
         // JWTを作成する
-        const jwtPayload: IJwtPayload = { email: _email };
+        const jwtPayload: IJwtPayload = {
+            email: _email,
+            role: _role
+        };
         const token: string = jwt.sign(jwtPayload,
             Buffer.from(process.env.RSA_PRIVATE_KEY, 'base64'),
             {

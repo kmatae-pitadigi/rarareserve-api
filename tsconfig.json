@@ -5,6 +5,7 @@
     "declaration": false,
     "module": "commonjs",
     "moduleResolution": "node",
+    "baseUrl": "./",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,

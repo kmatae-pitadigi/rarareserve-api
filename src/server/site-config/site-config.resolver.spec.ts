@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { EnvResolver } from './env.resolver';
+import { SiteConfigResolver } from './site-config.resolver';
 
-describe('EnvResolver', () => {
-  let resolver: EnvResolver;
+describe('SiteConfigResolver', () => {
+  let resolver: SiteConfigResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [EnvResolver],
+      providers: [SiteConfigResolver],
     }).compile();
 
-    resolver = module.get<EnvResolver>(EnvResolver);
+    resolver = module.get<SiteConfigResolver>(SiteConfigResolver);
   });
 
   it('should be defined', () => {

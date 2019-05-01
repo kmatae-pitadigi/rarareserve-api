@@ -1,21 +1,11 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const glob = require('glob');
 
 module.exports = {
-    entry: {
-        server: './src/server/main.ts',
-        assets: glob.sync('./src/server/assets/**/*')
-    },
     target: 'node',
     node: {
         __dirname: false,
         __filename: false
     },
-    externals: [
-        nodeExternals()
-    ], 
     module: {
         rules: [
             {
@@ -64,17 +54,12 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [ '.ts', '.txt' ]
+        extensions: [
+            '.ts',
+            '.js',
+            '.txt'
+        ]
     },
-    plugins: [
-        new BundleAnalyzerPlugin({
-                openAnalyzer: false,
-                generateStatsFile: true,
-                analyzerMode: 'static',
-                reportFilename: '../../report.html',
-                statsFilename: '../../stats.json'
-            })
-    ],
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist/server')

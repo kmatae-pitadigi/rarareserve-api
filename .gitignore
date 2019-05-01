@@ -71,3 +71,6 @@ secrets.dev.yaml
 # Report files
 report.html
 stats.json
+
+# dist
+dist/

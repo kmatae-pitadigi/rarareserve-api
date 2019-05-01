@@ -13,6 +13,11 @@
             "problemMatcher": []
         },
         {
+            "label": "stopnode",
+            "type": "shell",
+            "command": "powershell -Command Stop-Process -Name node"
+        },
+        {
             "label": "azds: prelaunch",
             "command": "azds",
             "args": [

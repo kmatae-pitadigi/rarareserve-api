@@ -2,7 +2,7 @@ import { Resolver, Query, Args, Mutation, Context } from '@nestjs/graphql';
 import { User } from './user';
 import { UserService } from './user.service';
 import { UseGuards } from '@nestjs/common';
-import { GqlAuthGuard } from '../guards/gqlauthguard';
+import { JwtAuthGuard } from '../guards/jwtauthguard';
 import { ChangeEmail } from './dto/change-email.dto';
 import { ChangeEmailResult } from './dto/change-email-result.dto';
 import { ChangePassword } from './dto/change-password.dto';
@@ -17,7 +17,7 @@ export class UserResolver {
     ) {}
 
     @Query(returns => User)
-    @UseGuards(GqlAuthGuard)
+    @UseGuards(JwtAuthGuard)
     user(@Args('email') _email: string): Promise<User> {
         return new Promise((resolve, reject) => {
             this.userService.findByEmail(_email)
@@ -31,7 +31,7 @@ export class UserResolver {
     }
 
     @Mutation(returns => ChangeEmailResult)
-    @UseGuards(GqlAuthGuard)
+    @UseGuards(JwtAuthGuard)
     changeemail(@Args('changeemail') _changeemail: ChangeEmail, @Context() ctx: any): Promise<ChangeEmailResult> {
         return new Promise((resolve, reject) => {
             this.userService.changeEmail(_changeemail, ctx.req.headers.origin)
@@ -45,7 +45,7 @@ export class UserResolver {
     }
 
     @Mutation(returns => ChangePasswordResult)
-    @UseGuards(GqlAuthGuard)
+    @UseGuards(JwtAuthGuard)
     changepassword(@Args('changepassword') _changePassword: ChangePassword): Promise<ChangePasswordResult> {
         return new Promise((resolve, reject) => {
             this.userService.changePassword(_changePassword)
@@ -59,7 +59,7 @@ export class UserResolver {
     }
 
     @Mutation(returns => ChangeProfileResult)
-    @UseGuards(GqlAuthGuard)
+    @UseGuards(JwtAuthGuard)
     changeprofile(@Args('changeprofile') _changeProfile: ChangeProfile): Promise<ChangeProfileResult> {
         return new Promise((resolve, reject) => {
             this.userService.changeProfile(_changeProfile)
