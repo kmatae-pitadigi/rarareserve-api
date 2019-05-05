@@ -30,6 +30,7 @@
     "@sendgrid/mail": "^6.3.1",
     "apollo-server-express": "^2.4.8",
     "bcrypt": "^3.0.5",
+    "datauri": "^2.0.0",
     "graphql": "^14.1.1",
     "helmet": "^3.16.0",
     "mssql": "^5.0.5",

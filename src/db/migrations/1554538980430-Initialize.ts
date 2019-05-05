@@ -106,6 +106,51 @@ export class Initialize1554538980430 implements MigrationInterface {
                     name: 'email',
                     type: 'nvarchar(255)',
                     isNullable: false
+                },
+                {
+                    name: 'headerimagefilename',
+                    type: 'nvarchar(255)',
+                    isNullable: true
+                },
+                {
+                    name: 'headerimage',
+                    type: 'nvarchar(max)',
+                    isNullable: true
+                },
+                {
+                    name: 'toppage',
+                    type: 'nvarchar(max)',
+                    isNullable: true
+                },
+                {
+                    name: 'footerpage',
+                    type: 'nvarchar(max)',
+                    isNullable: true
+                },
+                {
+                    name: 'footerimagefilename',
+                    type: 'nvarchar(255)',
+                    isNullable: true
+                },
+                {
+                    name: 'footerimage',
+                    type: 'nvarchar(max)',
+                    isNullable: true
+                },
+                {
+                    name: 'changeemailconfirm',
+                    type: 'nvarchar(max)',
+                    isNullable: false
+                },
+                {
+                    name: 'emailconfirm',
+                    type: 'nvarchar(max)',
+                    isNullable: false
+                },
+                {
+                    name: 'resetpassword',
+                    type: 'nvarchar(max)',
+                    isNullable: false
                 }
             ]
         }));

@@ -77,3 +77,6 @@ dist/
 
 # Graphql schema file
 schema.gql
+
+# Uploads folder
+Uploads/

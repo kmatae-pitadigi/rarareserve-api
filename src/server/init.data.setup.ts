@@ -1,6 +1,8 @@
 import { getRepository } from 'typeorm';
 import { User } from './user/user';
 import { SiteConfig } from './site-config/site-config';
+import * as fs from 'fs';
+import * as DataURI from 'datauri';
 
 export class InitDataSetup {
     async setup() {
@@ -30,6 +32,11 @@ export class InitDataSetup {
         }
 
         // サイト情報を追加する
+        const changeEmailConfirm: string = fs.readFileSync(__dirname + '/assets/text/changeemailconfirm.txt', 'utf8');
+        const emailConfirm: string = fs.readFileSync(__dirname + '/assets/text/emailconfirm.txt', 'utf8');
+        const resetPassword: string = fs.readFileSync(__dirname + '/assets/text/resetpassword.txt', 'utf8');
+        const toppage: string = fs.readFileSync(__dirname + '/assets/text/toppage.txt', 'utf8');
+        const footerpage: string = fs.readFileSync(__dirname + '/assets/text/footerpage.txt', 'utf8');
         const siteConfigRepository = getRepository(SiteConfig);
         const siteconfig: SiteConfig = await siteConfigRepository.findOne(1);
         if (!siteconfig) {
@@ -37,8 +44,23 @@ export class InitDataSetup {
             addSiteConfig.id = 1;
             addSiteConfig.sitename = 'スキッズキャンプ予約サイト';
             addSiteConfig.email = 'admin@local';
-
-            siteConfigRepository.save(addSiteConfig);
+            addSiteConfig.changeemailconfirm = changeEmailConfirm;
+            addSiteConfig.emailconfirm = emailConfirm;
+            addSiteConfig.resetpassword = resetPassword;
+            addSiteConfig.toppage = toppage;
+            addSiteConfig.footerpage = footerpage;
+            addSiteConfig.headerimagefilename = 'headerimage.jpg';
+            const dataUriHeaderImage = new DataURI();
+            dataUriHeaderImage.on('encoded', (content) => {
+                addSiteConfig.headerimage = content;
+                const dataUriFooterImage = new DataURI();
+                dataUriFooterImage.on('encoded', (content) => {
+                    addSiteConfig.footerimage = content;
+                    siteConfigRepository.save(addSiteConfig);
+                });
+                dataUriFooterImage.encode(__dirname + '/assets/image/footerimage.jpg');
+            });
+            dataUriHeaderImage.encode(__dirname + '/assets/image/headerimage.jpg');
         }
 
         console.info('InitDataSetup: Initialize1554538980430 done');

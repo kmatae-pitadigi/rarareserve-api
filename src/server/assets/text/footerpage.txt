@@ -1,0 +1,32 @@
+<style>
+	.footer {
+	  background-color: whitesmoke;
+	  padding:  0px 0px 0px 0px;
+	}
+	
+	.footertitle {
+	  font-size: 1.2rem;
+	  color: black;
+	  margin-bottom: 0.3em;
+	}
+	
+	.footeradress {
+	  font-size: 0.8rem;
+	}
+	
+	.footertel {
+	  font-size: 0.8rem;
+	  display: block;
+	}
+	
+	.footercopyright {
+	  text-align: center;
+	  color: black;
+	 }
+</style>
+<div class="footer">
+<p class="footertitle">名称</p>
+<p class="footeraddress">〒000-0000 住所</p>
+<p class="footertel">施設名：<a href="tel:000-000-0000">000-000-0000</a></p>
+<p class="footercopyright">Copyright © XXXXXX All Rights Reserved.</p>
+</div>

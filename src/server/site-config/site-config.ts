@@ -19,4 +19,40 @@ export class SiteConfig implements ISiteConfig {
     @Column()
     @Field()
     email: string;
+
+    @Column()
+    @Field({ nullable: true })
+    headerimagefilename?: string;
+
+    @Column()
+    @Field({ nullable: true })
+    headerimage?: string;
+
+    @Column()
+    @Field({ nullable: true })
+    toppage?: string;
+
+    @Column()
+    @Field({ nullable: true })
+    footerpage?: string;
+
+    @Column()
+    @Field({ nullable: true })
+    footerimagefilename?: string;
+
+    @Column()
+    @Field({ nullable: true })
+    footerimage?: string;
+
+    @Column()
+    @Field()
+    changeemailconfirm: string;
+
+    @Column()
+    @Field()
+    emailconfirm: string;
+
+    @Column()
+    @Field()
+    resetpassword: string;
 }

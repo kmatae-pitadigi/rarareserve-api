@@ -14,60 +14,51 @@ export class EmailService {
 
     /**
      * メールを送信する
-     * @param templateName テンプレートファイル名
+     * @param template メールテンプレート
      * @param toemail メール送信先
      * @param opts メール送信オプション
      * @returns true:正常
      */
-    private sendMail(templateName: string, toemail: string, opts?: IEmailOptions): Promise<boolean> {
+    private sendMail(template: string, toemail: string, opts?: IEmailOptions): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            // Eメールテンプレートを読み込む
-            fs.readFile(__dirname + '/assets/' + templateName + '.txt', 'utf-8', (err, data) => {
-                if (err) {
-                    reject(err);
+            let data: string = template;
+            // オプションの指定に沿ってテンプレート文字列を置換する
+            if (opts) {
+                // サービス名を置換する
+                if (opts.servicename) {
+                    data = data.replace(/##servicename##/g, opts.servicename);
                 }
-                else {
-                    // オプションの指定に沿ってテンプレート文字列を置換する
-                    if (opts) {
-                        // サービス名を置換する
-                        if (opts.servicename) {
-                            data = data.replace(/##servicename##/g, opts.servicename);
-                        }
-                        // 確認用URLを置換する
-                        if (opts.confirmurl) {
-                            data = data.replace(/##confirmurl##/g, opts.confirmurl);
-                        }
-                        // URLを置換する
-                        if (opts.url) {
-                            data = data.replace(/##url##/g, opts.url);
-                        }
-                        // メールアドレスを置換する
-                        if (opts.email) {
-                            data = data.replace(/##email##/g, opts.email);
-                        }
-                    }
-
-                    // SENDGRID_API_KEYを設定する
-                    sgmail.setApiKey(process.env.SENDGRID_API_KEY);
-                    // 送信するメールの内容を設定する
-                    const msg = {
-                        to: toemail,
-                        from: opts.email,
-                        subject: '【' + opts.servicename + '】からのお知らせ',
-                        text: data
-                    };
-
-                    // メールを送信する
-                    sgmail.send(msg)
-                    .then((req) => {
-                        resolve(true);
-                    })
-                    .catch((err) => {
-                        reject(err);
-                    });
+                // 確認用URLを置換する
+                if (opts.confirmurl) {
+                    data = data.replace(/##confirmurl##/g, opts.confirmurl);
                 }
+                // URLを置換する
+                if (opts.url) {
+                    data = data.replace(/##url##/g, opts.url);
+                }
+                // メールアドレスを置換する
+                if (opts.email) {
+                    data = data.replace(/##email##/g, opts.email);
+                }
+            }
 
+            // SENDGRID_API_KEYを設定する
+            sgmail.setApiKey(process.env.SENDGRID_API_KEY);
+            // 送信するメールの内容を設定する
+            const msg = {
+                to: toemail,
+                from: opts.email,
+                subject: '【' + opts.servicename + '】からのお知らせ',
+                text: data
+            };
+
+            // メールを送信する
+            sgmail.send(msg)
+            .then((req) => {
                 resolve(true);
+            })
+            .catch((err) => {
+                reject(err);
             });
         });
     }

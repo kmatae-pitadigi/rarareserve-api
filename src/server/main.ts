@@ -11,6 +11,9 @@ async function bootstrap() {
   // ヘルメットをかぶる
   app.use(helmet());
 
+  // CORSを許可する
+  app.enableCors();
+
   // 初期値を設定する
   const initDataSetup: InitDataSetup = new InitDataSetup();
   initDataSetup.setup();
