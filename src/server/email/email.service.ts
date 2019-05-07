@@ -44,13 +44,22 @@ export class EmailService {
 
             // SENDGRID_API_KEYを設定する
             sgmail.setApiKey(process.env.SENDGRID_API_KEY);
+
             // 送信するメールの内容を設定する
             const msg = {
                 to: toemail,
                 from: opts.email,
                 subject: '【' + opts.servicename + '】からのお知らせ',
-                text: data
+                text: data,
+                customArgs: {
+                    servicename: ''
+                }
             };
+
+            // カスタム引数にサービス名を設定する
+            if (opts.servicename) {
+                msg.customArgs.servicename = opts.servicename;
+            }
 
             // メールを送信する
             sgmail.send(msg)
@@ -65,7 +74,7 @@ export class EmailService {
 
     /**
      * メールでトークンを送信する
-     * @param _format メールフォーマット名
+     * @param _format メールフォーマット
      * @param _path 認証パス名
      * @param _email 送信先メールアドレス
      * @param _url 要求元URL

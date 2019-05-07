@@ -56,7 +56,7 @@ export class SignupResolver {
     }
 
     @Mutation(returns => ResetPasswordResult)
-    resetpassword(@Args('resetPassword') resetPassword: ResetPassword): Promise<ResetPasswordResult> {
+    resetpassword(@Args('resetpassword') resetPassword: ResetPassword): Promise<ResetPasswordResult> {
         return new Promise((resolve, reject) => {
             this.signupServiece.resetPassword(resetPassword)
             .then((resetPasswordResult: ResetPasswordResult) => {
