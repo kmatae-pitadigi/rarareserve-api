@@ -8,7 +8,8 @@ module.exports = merge(common, {
     mode: 'production',
     entry: {
         server: './src/server/main.ts',
-        assets: glob.sync('./src/server/assets/**/*')
+        text: glob.sync('./src/server/assets/text/**/*'),
+        image: glob.sync('./src/server/assets/image/**/*')
     },
     externals: [
         nodeExternals()

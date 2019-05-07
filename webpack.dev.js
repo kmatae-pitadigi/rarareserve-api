@@ -11,7 +11,8 @@ module.exports = merge(common, {
             'webpack/hot/poll',
             './src/server/main.ts'
         ],
-        assets: glob.sync('./src/server/assets/**/*')
+        text: glob.sync('./src/server/assets/text/**/*'),
+        image: glob.sync('./src/server/assets/image/**/*')
     },
     mode: 'development',
     devtool: 'source-map',

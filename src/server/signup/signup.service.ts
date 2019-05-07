@@ -11,12 +11,14 @@ import { IResendConfirmMail } from './interfaces/iresend-confirm-mail.interface'
 import { ISendResetPasswordMail } from './interfaces/isend-reset-password-mail.interface';
 import { ISendResetPasswordMailResult } from './interfaces/isend-reset-password-mail-result.interface';
 import { IResetPassword } from './interfaces/ireset-password.interface';
+import { SiteConfigService } from '../site-config/site-config.service';
 
 @Injectable()
 export class SignupService {
     constructor(
         private readonly userService: UserService,
-        private readonly emailService: EmailService
+        private readonly emailService: EmailService,
+        private readonly siteConfigService: SiteConfigService
     ) {}
 
     // サインアップする

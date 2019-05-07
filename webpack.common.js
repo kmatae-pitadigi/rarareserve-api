@@ -23,7 +23,7 @@ module.exports = {
                         },
                     },
                 ],
-                exclude: /(node_modules|client)/
+                exclude: /node_modules/
             },
             {
                 test: /\.ts$/,
@@ -35,7 +35,7 @@ module.exports = {
                         }
                     },
                 ],
-                exclude: /(node_modules|client)/
+                exclude: /node_modules/
             },
             {
                 test: /\.txt$/,
@@ -43,13 +43,27 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: 'assets/',
+                        outputPath: 'assets/text/',
                         publicPath: function(path) {
                             return '../' + path;
                         }
                     }
                 },
-                exclude: /(node_modules|client)/
+                exclude: /node_modules/
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'assets/image/',
+                        publicPath: function(path) {
+                            return '../' + path;
+                        }
+                    }
+                },
+                exclude: /node_modules/
             }
         ]
     },
@@ -57,7 +71,8 @@ module.exports = {
         extensions: [
             '.ts',
             '.js',
-            '.txt'
+            '.txt',
+            '.jpg'
         ]
     },
     output: {

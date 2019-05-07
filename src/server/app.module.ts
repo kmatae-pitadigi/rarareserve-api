@@ -11,6 +11,7 @@ import { SiteConfigModule } from './site-config/site-config.module';
 import { SiteConfig } from './site-config/site-config';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './guards/rolesguard';
+import { UploadFileModule } from './upload-file/upload-file.module';
 
 @Module({
   imports: [
@@ -47,7 +48,8 @@ import { RolesGuard } from './guards/rolesguard';
       ]
     }),
     UserModule,
-    EmailModule
+    EmailModule,
+    UploadFileModule
   ],
 
   providers: [
