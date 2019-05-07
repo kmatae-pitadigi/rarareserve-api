@@ -42,7 +42,7 @@ export class InitDataSetup {
         if (!siteconfig) {
             const addSiteConfig: SiteConfig = new SiteConfig();
             addSiteConfig.id = 1;
-            addSiteConfig.sitename = 'スキッズキャンプ予約サイト';
+            addSiteConfig.sitename = 'XXX予約サイト';
             addSiteConfig.email = 'admin@local';
             addSiteConfig.changeemailconfirm = changeEmailConfirm;
             addSiteConfig.emailconfirm = emailConfirm;
@@ -50,6 +50,7 @@ export class InitDataSetup {
             addSiteConfig.toppage = toppage;
             addSiteConfig.footerpage = footerpage;
             addSiteConfig.headerimagefilename = 'headerimage.jpg';
+            addSiteConfig.footerimagefilename = 'footerimage.jpg';
             const dataUriHeaderImage = new DataURI();
             dataUriHeaderImage.on('encoded', (content) => {
                 addSiteConfig.headerimage = content;
