@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { ISignup } from './interfaces/isignup.interface';
 import { UserService } from '../user/user.service';
 import { EmailService } from '../email/email.service';
@@ -12,6 +12,7 @@ import { ISendResetPasswordMail } from './interfaces/isend-reset-password-mail.i
 import { ISendResetPasswordMailResult } from './interfaces/isend-reset-password-mail-result.interface';
 import { IResetPassword } from './interfaces/ireset-password.interface';
 import { SiteConfigService } from '../site-config/site-config.service';
+import { SiteConfig } from '../site-config/site-config';
 
 @Injectable()
 export class SignupService {
@@ -29,9 +30,15 @@ export class SignupService {
             .then((signupResult: ISignupResult) => {
                 // 正常にユーザが追加できたら、登録完了メールを送る
                 if (signupResult.result === 0) {
-                    this.emailService.sendTokenMail('emailconfirm', 'verifytoken', signup.email, _url)
-                    .then((result: boolean) => {
-                        resolve(signupResult);
+                    this.siteConfigService.get()
+                    .then((_siteConfig: SiteConfig) => {
+                        this.emailService.sendTokenMail(_siteConfig.emailconfirm, 'verifytoken', signup.email, _url)
+                        .then((result: boolean) => {
+                            resolve(signupResult);
+                        })
+                        .catch((err) => {
+                            reject(err);
+                        });
                     })
                     .catch((err) => {
                         reject(err);
@@ -69,11 +76,17 @@ export class SignupService {
                 }
                 // いずれでもなければ登録完了用メールを送信する
                 else {
-                    this.emailService.sendTokenMail('emailconfirm', 'verifytoken', _resendConfirmMail.email, _url)
-                    .then((result: boolean) => {
-                        resolve({
-                            result: true,
-                            message: ''
+                    this.siteConfigService.get()
+                    .then((_siteConfig: SiteConfig) => {
+                        this.emailService.sendTokenMail(_siteConfig.emailconfirm, 'verifytoken', _resendConfirmMail.email, _url)
+                        .then((result: boolean) => {
+                            resolve({
+                                result: true,
+                                message: ''
+                            });
+                        })
+                        .catch((err) => {
+                            reject(err);
                         });
                     })
                     .catch((err) => {
@@ -110,11 +123,17 @@ export class SignupService {
                     this.userService.save(user)
                     .then((saveUser: IUser) => {
                         // パスワードリセット用メールを送信する
-                        this.emailService.sendTokenMail('resetpassword', 'resetpassword', _sendResetPasswordMail.email, _url)
-                        .then((result: boolean) => {
-                            resolve({
-                                result: true,
-                                message: ''
+                        this.siteConfigService.get()
+                        .then((_siteConfig: SiteConfig) => {
+                            this.emailService.sendTokenMail(_siteConfig.resetpassword, 'resetpassword', _sendResetPasswordMail.email, _url)
+                            .then((result: boolean) => {
+                                resolve({
+                                    result: true,
+                                    message: ''
+                                });
+                            })
+                            .catch((err) => {
+                                reject(err);
                             });
                         })
                         .catch((err) => {
