@@ -13,7 +13,8 @@
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "test": "jest",
+    "test": "jest --reporters=default --verbose",
+    "test:ci": "jest --reporters=jest-junit",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
@@ -33,6 +34,7 @@
     "datauri": "^2.0.0",
     "graphql": "^14.1.1",
     "helmet": "^3.16.0",
+    "jest-junit": "^6.4.0",
     "mssql": "^5.0.5",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
@@ -59,7 +61,7 @@
     "prettier": "^1.15.3",
     "supertest": "^3.4.1",
     "terser-webpack-plugin": "^1.2.3",
-    "ts-jest": "^23.10.5",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^5.3.3",
     "ts-node": "^7.0.1",
     "tsconfig-paths": "^3.8.0",
@@ -72,19 +74,5 @@
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2",
     "webpack-stream": "^5.2.1"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "src",
-    "testRegex": ".spec.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
   }
 }

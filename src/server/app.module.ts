@@ -12,6 +12,8 @@ import { SiteConfig } from './site-config/site-config';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './guards/rolesguard';
 import { UploadFileModule } from './upload-file/upload-file.module';
+import { PartnerModule } from './partner/partner.module';
+import { Partner } from './partner/partner';
 
 @Module({
   imports: [
@@ -44,12 +46,14 @@ import { UploadFileModule } from './upload-file/upload-file.module';
       migrations: [ __dirname + '/../db/migrations/**/*.js'],
       entities: [
         User,
-        SiteConfig
+        SiteConfig,
+        Partner
       ]
     }),
     UserModule,
     EmailModule,
-    UploadFileModule
+    UploadFileModule,
+    PartnerModule
   ],
 
   providers: [

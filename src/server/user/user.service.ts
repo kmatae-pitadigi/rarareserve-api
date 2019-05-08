@@ -26,13 +26,16 @@ export class UserService {
     // 指定されたEメールアドレスのユーザを検索する
     findByEmail(_email: string): Promise<User> {
         return new Promise((resolve, reject) => {
-            this.userRepository.findOne({ where: { email: _email }})
-                .then((user: User) => {
-                    resolve(user);
-                })
-                .catch((err) => {
-                    reject(err);
-                });
+            this.userRepository.findOne({
+                where: { email: _email },
+                relations: ['partners']
+            })
+            .then((user: User) => {
+                resolve(user);
+            })
+            .catch((err) => {
+                reject(err);
+            });
         });
     }
 
@@ -43,13 +46,15 @@ export class UserService {
      */
     findById(_id: string): Promise<User> {
         return new Promise((resolve, reject) => {
-            this.userRepository.findOne(_id)
-                .then((user: User) => {
-                    resolve(user);
-                })
-                .catch((err) => {
-                    reject(err);
-                });
+            this.userRepository.findOne(_id, {
+                relations: ['partners']
+            })
+            .then((user: User) => {
+                resolve(user);
+            })
+            .catch((err) => {
+                reject(err);
+            });
         });
     }
 

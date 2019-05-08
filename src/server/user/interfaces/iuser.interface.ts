@@ -1,3 +1,5 @@
+import { IPartner } from '../../partner/interfaces/ipartner.interface';
+
 export interface IUser {
     id: string;
     name: string;
@@ -13,4 +15,5 @@ export interface IUser {
     sex: number;
     createdAt: Date;
     updatedAt: Date;
+    partners?: IPartner[];
 }

@@ -80,3 +80,6 @@ schema.gql
 
 # Uploads folder
 Uploads/
+
+# Test result file
+junit.xml

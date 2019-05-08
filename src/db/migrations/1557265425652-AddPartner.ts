@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import {MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class AddPartner1557265425652 implements MigrationInterface {
 
@@ -12,6 +12,11 @@ export class AddPartner1557265425652 implements MigrationInterface {
                     isPrimary: true,
                     isNullable: false,
                     default: 'newid()'
+                },
+                {
+                    name: 'userid',
+                    type: 'uniqueidentifier',
+                    isNullable: false
                 },
                 {
                     name: 'name',
@@ -40,6 +45,14 @@ export class AddPartner1557265425652 implements MigrationInterface {
                     type: 'smallint',
                     isNullable: false,
                     default: 0
+                }
+            ],
+            indices: [
+                {
+                    columnNames: [
+                        'userid'
+                    ],
+                    isUnique: false
                 }
             ]
         }), true);
