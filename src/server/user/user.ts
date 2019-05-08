@@ -120,7 +120,7 @@ export class User implements IUser {
     /**
      * パートナー
      */
-    @Field(type => [Partner])
+    @Field(type => [Partner], { nullable: true })
     @OneToMany(type => Partner, partner => partner.user)
     partners?: Partner[];
 }
