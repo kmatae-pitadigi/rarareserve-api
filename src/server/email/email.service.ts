@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as sgmail from '@sendgrid/mail';
 import { IEmailOptions } from './interfaces/iemail-options.interface';
-import * as fs from 'fs';
 import { Utils } from '../utils/utils';
 import { SiteConfigService } from '../site-config/site-config.service';
 import { ISiteConfig } from '../site-config/interfaces/isite-config.interface';

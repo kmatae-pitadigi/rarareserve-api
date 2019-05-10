@@ -14,6 +14,8 @@ import { SignupResolver } from './signup.resolver';
         SignupResolver
     ],
     controllers: [],
-    exports: []
+    exports: [
+        SignupService
+    ]
 })
 export class SignupModule {}

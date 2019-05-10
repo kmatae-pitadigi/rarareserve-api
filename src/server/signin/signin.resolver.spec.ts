@@ -8,7 +8,13 @@ describe('SigninResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [SigninResolver],
+      imports: [
+        AppModule,
+        SigninModule
+      ],
+      providers: [
+        SigninResolver
+      ],
     }).compile();
 
     resolver = module.get<SigninResolver>(SigninResolver);

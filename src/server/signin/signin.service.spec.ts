@@ -14,7 +14,7 @@ describe('SigninService', () => {
       ],
       providers: [
         SigninService
-      ],
+      ]
     }).compile();
 
     service = module.get<SigninService>(SigninService);
