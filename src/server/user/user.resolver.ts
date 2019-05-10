@@ -20,7 +20,7 @@ export class UserResolver {
     @UseGuards(JwtAuthGuard)
     user(@Args('email') _email: string): Promise<User> {
         return new Promise((resolve, reject) => {
-            this.userService.findByEmail(_email)
+            this.userService.findByEmail(_email, ['partners'])
             .then((user: User) => {
                 resolve(user);
             })
