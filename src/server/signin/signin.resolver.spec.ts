@@ -1,5 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SigninResolver } from './signin.resolver';
+import { AppModule } from '../app.module';
+import { SigninModule } from './signin.module';
 
 describe('SigninResolver', () => {
   let resolver: SigninResolver;

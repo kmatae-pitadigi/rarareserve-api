@@ -1,5 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SiteConfigResolver } from './site-config.resolver';
+import { AppModule } from '../app.module';
+import { SiteConfigModule } './site-config.module';
 
 describe('SiteConfigResolver', () => {
   let resolver: SiteConfigResolver;

@@ -8,12 +8,12 @@ import { SignupResolver } from './signup.resolver';
     imports: [
         UserModule,
         EmailModule
-      ],
-      providers: [
-          SignupService,
-          SignupResolver
-      ],
-      controllers: [],
-      exports: []
+    ],
+    providers: [
+        SignupService,
+        SignupResolver
+    ],
+    controllers: [],
+    exports: []
 })
 export class SignupModule {}
