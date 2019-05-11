@@ -18,6 +18,11 @@ module.exports = {
         "default",
         "jest-junit"
     ],
+    "coverageReporters": [
+        "text",
+        "html",
+        "cobertura"
+    ]
     /*
     coverageThreshold: {
         global: {
