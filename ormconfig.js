@@ -8,7 +8,7 @@ module.exports = [
         "database": process.env.DATABASE_DATABASE,
         "extra": {
             "options": {
-                "encrypt": process.env.DATABASE_ENCRYPY === "yes" ? true: false
+                "encrypt": process.env.DATABASE_ENCRYPY === 'yes'
             }
         },
         "synchronize": false,
