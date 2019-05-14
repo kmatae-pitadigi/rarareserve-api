@@ -13,7 +13,9 @@ import { AuthModule } from '../auth/auth.module';
       SigninResolver
     ],
     controllers: [],
-    exports: []
+    exports: [
+      SigninService
+    ]
 })
 export class SigninModule {
 }
