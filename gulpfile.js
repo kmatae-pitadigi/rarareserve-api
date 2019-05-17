@@ -2,13 +2,14 @@ const gulp = require('gulp');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const gulpTypescript = require('gulp-typescript');
-const exec = require('child_process');
 const del = require('del');
 
 const webpackConfigDev = require('./webpack.dev');
 const webpackConfigProd = require('./webpack.prod');
 
 const typescriptProjectDb = gulpTypescript.createProject('./src/db/tsconfig.db.json');
+
+require('dotenv').config;
 
 // ビルドモジュールの削除
 gulp.task('clean-dist', () => {

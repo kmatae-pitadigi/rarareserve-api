@@ -2,12 +2,11 @@ import 'reflect-metadata';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { IUser } from './interfaces/iuser.interface';
 import { ObjectType, Field } from 'type-graphql';
-import { Partner } from '../partner/partner';
 
 /**
  * ユーザテーブル
  */
-@ObjectType()
+@ObjectType('User')
 @Entity({name: 'user'})
 export class User implements IUser {
     /**
@@ -116,11 +115,4 @@ export class User implements IUser {
     @Field()
     @Column()
     sex: number;
-
-    /**
-     * パートナー
-     */
-    @Field(type => [Partner], { nullable: true })
-    @OneToMany(type => Partner, partner => partner.user)
-    partners?: Partner[];
 }

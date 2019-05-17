@@ -21,6 +21,7 @@ import { Partner } from './partner/partner';
     SignupModule,
     AuthModule,
     SiteConfigModule,
+    PartnerModule,
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,
       autoSchemaFile: 'schema.gql',
@@ -52,8 +53,7 @@ import { Partner } from './partner/partner';
     }),
     UserModule,
     EmailModule,
-    UploadFileModule,
-    PartnerModule
+    UploadFileModule
   ],
 
   providers: [
