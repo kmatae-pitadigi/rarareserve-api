@@ -1,28 +1,27 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { ObjectType, Field } from 'type-graphql';
+import { ObjectType, InputType, Field } from 'type-graphql';
 import { IPartner } from './interfaces/ipartner.interface';
-import { User } from '../user/user';
 
 /**
  * パートナーテーブル
  */
-@ObjectType()
+@ObjectType('Partner')
+@InputType('PartnerInput')
 @Entity({name: 'partner'})
 export class Partner implements IPartner {
     /**
      * ID
      */
-    @Field()
+    @Field({nullable: true})
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id?: string;
 
     /**
-     * ユーザ
+     * ユーザID
      */
-    @Field(type => User)
-    @ManyToOne(type => User, user => user.partners)
-    @JoinColumn({ name: 'userid' })
-    user: User;
+    @Field()
+    @Column()
+    userid: string;
 
     /**
      * 氏名
@@ -41,16 +40,16 @@ export class Partner implements IPartner {
     /**
      * 作成日
      */
-    @Field()
+    @Field({nullable: true})
     @CreateDateColumn()
-    createdAt: Date;
+    createdAt?: Date;
 
     /**
      * 更新日
      */
-    @Field()
+    @Field({nullable: true})
     @UpdateDateColumn()
-    updatedAt: Date;
+    updatedAt?: Date;
 
     /**
      * 性別

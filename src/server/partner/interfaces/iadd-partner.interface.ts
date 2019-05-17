@@ -1,9 +1,7 @@
-export interface IPartner {
+export interface IAddPartner {
     id?: string;
     userid: string;
     name: string;
     kana: string;
     sex: number;
-    createdAt?: Date;
-    updatedAt?: Date;
 }
