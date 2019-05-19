@@ -55,4 +55,12 @@ export class SiteConfig implements ISiteConfig {
     @Column()
     @Field()
     resetpassword: string;
+
+    @Column()
+    @Field()
+    createdAt: Date;
+
+    @Column()
+    @Field()
+    updatedAt: Date;
 }

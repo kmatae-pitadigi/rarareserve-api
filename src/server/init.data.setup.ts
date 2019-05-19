@@ -24,8 +24,8 @@ export class InitDataSetup {
             addUser.phone = '000-000-0000';
             addUser.password = '$2b$10$J9TKmVGfeujQ0q06kjQ54.pK.8OLm0CVSmpMEVK5uDys9tJMQWutu';
             addUser.role = 2;
-            addUser.ispasswordreset = 0;
-            addUser.isemailconfirmed = 1;
+            addUser.ispasswordreset = false;
+            addUser.isemailconfirmed = true;
             addUser.sex = 0;
 
             userRepository.save(addUser);

@@ -78,7 +78,7 @@ export class UserService {
                     // パスワードはハッシュ化する
                     _user.password = this.getPasswordHash(_user.password);
                     // Eメール確認フラグは0に設定する
-                    _user.isemailconfirmed = 0;
+                    _user.isemailconfirmed = false;
                     // ユーザ情報を登録する
                     this.userRepository.save(_user)
                     .then((result: User) => {
@@ -124,7 +124,7 @@ export class UserService {
                     });
                 }
                 // パスワードリセットフラグが0ならエラーにする
-                else if (user.ispasswordreset === 0) {
+                else if (user.ispasswordreset === false) {
                     resolve({
                         result: false,
                         message: 'パスワードがリセットされていません'
@@ -133,7 +133,7 @@ export class UserService {
                 // 指定されたパスワードを設定する
                 else {
                     user.password = this.getPasswordHash(_password);
-                    user.ispasswordreset = 0;
+                    user.ispasswordreset = false;
                     this.userRepository.save(user)
                     .then((resetUser: IUser) => {
                         resolve({
@@ -169,7 +169,7 @@ export class UserService {
                     // Eメールアドレスを変更する
                     user.email = _changeEmail.email;
                     // 登録完了フラグを0にする
-                    user.isemailconfirmed = 0;
+                    user.isemailconfirmed = false;
                     this.save(user)
                     .then((_saveUser: IUser) => {
                         this.siteConfigService.get()

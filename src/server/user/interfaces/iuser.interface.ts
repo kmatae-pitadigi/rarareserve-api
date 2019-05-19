@@ -8,8 +8,8 @@ export interface IUser {
     phone: string;
     password: string;
     role: number;
-    isemailconfirmed?: number;
-    ispasswordreset?: number;
+    isemailconfirmed?: boolean;
+    ispasswordreset?: boolean;
     sex: number;
     createdAt?: Date;
     updatedAt?: Date;

@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { IUser } from './interfaces/iuser.interface';
 import { ObjectType, InputType, Field } from 'type-graphql';
 
@@ -83,7 +83,7 @@ export class User implements IUser {
      */
     @Field({nullable: true})
     @Column()
-    isemailconfirmed?: number;
+    isemailconfirmed?: boolean;
 
     /**
      * パスワードリセットフラグ
@@ -92,7 +92,7 @@ export class User implements IUser {
      */
     @Field({nullable: true})
     @Column()
-    ispasswordreset?: number;
+    ispasswordreset?: boolean;
 
     /**
      * 作成日
