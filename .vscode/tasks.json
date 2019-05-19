@@ -15,7 +15,8 @@
         {
             "label": "stopnode",
             "type": "shell",
-            "command": "powershell -Command Stop-Process -Name node"
+            "command": "powershell -Command Stop-Process -Name node",
+            "problemMatcher": []
         },
         {
             "label": "azds: prelaunch",

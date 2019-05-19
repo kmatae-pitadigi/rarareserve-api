@@ -1,20 +1,21 @@
 import 'reflect-metadata';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { IUser } from './interfaces/iuser.interface';
-import { ObjectType, Field } from 'type-graphql';
+import { ObjectType, InputType, Field } from 'type-graphql';
 
 /**
  * ユーザテーブル
  */
 @ObjectType('User')
+@InputType('UserInput')
 @Entity({name: 'user'})
 export class User implements IUser {
     /**
      * ID
      */
-    @Field()
+    @Field({nullable: true})
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id?: string;
 
     /**
      * 氏名
@@ -61,9 +62,9 @@ export class User implements IUser {
     /**
      * パスワード(ハッシュ値)
      */
-    @Field()
+    @Field({nullable: true})
     @Column()
-    password: string;
+    password?: string;
 
     /**
      * ロール
@@ -77,35 +78,35 @@ export class User implements IUser {
 
     /**
      * 登録完了待ちフラグ
-     *  1:登録完了待ち
-     *  0:登録完了
+     *  0:登録完了待ち
+     *  1:登録完了
      */
-    @Field()
+    @Field({nullable: true})
     @Column()
-    isemailconfirmed: number;
+    isemailconfirmed?: boolean;
 
     /**
      * パスワードリセットフラグ
      *  1: パスワードリセット中
      *  0: 通常
      */
-    @Field()
+    @Field({nullable: true})
     @Column()
-    ispasswordreset: number;
+    ispasswordreset?: boolean;
 
     /**
      * 作成日
      */
-    @Field()
+    @Field({nullable: true})
     @CreateDateColumn()
-    createdAt: Date;
+    createdAt?: Date;
 
     /**
      * 更新日
      */
-    @Field()
+    @Field({nullable: true})
     @UpdateDateColumn()
-    updatedAt: Date;
+    updatedAt?: Date;
 
     /**
      * 性別
@@ -115,4 +116,11 @@ export class User implements IUser {
     @Field()
     @Column()
     sex: number;
+
+    /**
+     * 誕生日
+     */
+    @Field({nullable: true})
+    @Column()
+    birthday?: Date;
 }

@@ -1,16 +1,17 @@
 export interface IUser {
-    id: string;
+    id?: string;
     name: string;
     kana: string;
     email: string;
     postcode: string;
     address: string;
     phone: string;
-    password: string;
+    password?: string;
     role: number;
-    isemailconfirmed: number;
-    ispasswordreset: number;
+    isemailconfirmed?: boolean;
+    ispasswordreset?: boolean;
     sex: number;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    birthday?: Date;
 }

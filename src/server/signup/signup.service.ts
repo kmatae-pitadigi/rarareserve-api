@@ -1,5 +1,4 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { ISignup } from './interfaces/isignup.interface';
 import { UserService } from '../user/user.service';
 import { EmailService } from '../email/email.service';
 import { ISignupResult } from './interfaces/isignup-result.interface';
@@ -23,16 +22,16 @@ export class SignupService {
     ) {}
 
     // サインアップする
-    signup(signup: ISignup, _url: string): Promise<ISignupResult> {
+    signup(_user: IUser, _url: string): Promise<ISignupResult> {
         return new Promise((resolve, reject) => {
             // ユーザを登録する
-            this.userService.add(signup)
+            this.userService.add(_user)
             .then((signupResult: ISignupResult) => {
                 // 正常にユーザが追加できたら、登録完了メールを送る
                 if (signupResult.result === 0) {
                     this.siteConfigService.get()
                     .then((_siteConfig: SiteConfig) => {
-                        this.emailService.sendTokenMail(_siteConfig.emailconfirm, 'verifytoken', signup.email, _url)
+                        this.emailService.sendTokenMail(_siteConfig.emailconfirm, 'verifytoken', _user.email, _url)
                         .then((result: boolean) => {
                             resolve(signupResult);
                         })
@@ -68,7 +67,7 @@ export class SignupService {
                     });
                 }
                 // すでに登録済みならエラーにする
-                else if (user.isemailconfirmed === 1) {
+                else if (user.isemailconfirmed === true) {
                     resolve({
                         result: false,
                         message: 'すでに登録が完了しています'
@@ -110,7 +109,7 @@ export class SignupService {
                     });
                 }
                 // 登録が未完了だったらエラーにする
-                else if (user.isemailconfirmed === 0) {
+                else if (user.isemailconfirmed === false) {
                     resolve({
                         result: false,
                         message: 'ユーザの登録が完了していません。登録完了メールで登録を完了してください。'
@@ -118,7 +117,7 @@ export class SignupService {
                 }
                 else {
                     // パスワードリセットフラグを設定する
-                    user.ispasswordreset = 1;
+                    user.ispasswordreset = true;
                     // ユーザを保存する
                     this.userService.save(user)
                     .then((saveUser: IUser) => {
@@ -175,7 +174,7 @@ export class SignupService {
                         }
                         else {
                             // すでに登録完了だったらエラーにする
-                            if ( user.isemailconfirmed === 1) {
+                            if ( user.isemailconfirmed === true) {
                                 resolve({
                                     result: false,
                                     message: user.email + 'はすでに登録完了済みです'
@@ -183,7 +182,7 @@ export class SignupService {
                             }
                             else {
                                 // 登録完了フラグを設定する
-                                user.isemailconfirmed = 1;
+                                user.isemailconfirmed = true;
                                 // ユーザ情報を保存する
                                 this.userService.save(user)
                                 .then((saveUser: IUser) => {

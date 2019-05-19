@@ -11,4 +11,6 @@ export interface ISiteConfig {
     changeemailconfirm: string;
     emailconfirm: string;
     resetpassword: string;
+    createdAt: Date;
+    updatedAt: Date;
 }

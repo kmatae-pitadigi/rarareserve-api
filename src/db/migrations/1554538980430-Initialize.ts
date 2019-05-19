@@ -8,40 +8,40 @@ export class Initialize1554538980430 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'uniqueidentifier',
+                    type: 'uuid',
                     isPrimary: true,
                     isNullable: false,
-                    default: 'newid()'
+                    default: 'uuid_generate_v4()'
                 },
                 {
                     name: 'name',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: false
                 },
                 {
                     name: 'kana',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: false
                 },
                 {
                     name: 'email',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: false,
                     isUnique: true
                 },
                 {
                     name: 'postcode',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: false
                 },
                 {
                     name: 'address',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: false
                 },
                 {
                     name: 'phone',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: false
                 },
                 {
@@ -52,31 +52,31 @@ export class Initialize1554538980430 implements MigrationInterface {
                 },
                 {
                     name: 'isemailconfirmed',
-                    type: 'bit',
+                    type: 'boolean',
                     isNullable: false,
-                    default: 0
+                    default: false
                 },
                 {
                     name: 'ispasswordreset',
-                    type: 'bit',
+                    type: 'boolean',
                     isNullable: false,
-                    default: 0
+                    default: false
                 },
                 {
                     name: 'createdAt',
-                    type: 'datetime',
+                    type: 'timestamp',
                     isNullable: false,
-                    default: 'getdate()'
+                    default: 'now()'
                 },
                 {
                     name: 'updatedAt',
-                    type: 'datetime',
+                    type: 'timestamp',
                     isNullable: false,
-                    default: 'getdate()'
+                    default: 'now()'
                 },
                 {
                     name: 'password',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: false
                 },
                 {
@@ -84,6 +84,11 @@ export class Initialize1554538980430 implements MigrationInterface {
                     type: 'smallint',
                     isNullable: false,
                     default: 0
+                },
+                {
+                    name: 'birthday',
+                    type: 'date',
+                    isNullable: true
                 }
             ]
         }), true);
@@ -99,61 +104,132 @@ export class Initialize1554538980430 implements MigrationInterface {
                 },
                 {
                     name: 'sitename',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: false
                 },
                 {
                     name: 'email',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: false
                 },
                 {
                     name: 'headerimagefilename',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: true
                 },
                 {
                     name: 'headerimage',
-                    type: 'nvarchar(max)',
+                    type: 'text',
                     isNullable: true
                 },
                 {
                     name: 'toppage',
-                    type: 'nvarchar(max)',
+                    type: 'text',
                     isNullable: true
                 },
                 {
                     name: 'footerpage',
-                    type: 'nvarchar(max)',
+                    type: 'text',
                     isNullable: true
                 },
                 {
                     name: 'footerimagefilename',
-                    type: 'nvarchar(255)',
+                    type: 'varchar(255)',
                     isNullable: true
                 },
                 {
                     name: 'footerimage',
-                    type: 'nvarchar(max)',
+                    type: 'text',
                     isNullable: true
                 },
                 {
                     name: 'changeemailconfirm',
-                    type: 'nvarchar(max)',
+                    type: 'text',
                     isNullable: false
                 },
                 {
                     name: 'emailconfirm',
-                    type: 'nvarchar(max)',
+                    type: 'text',
                     isNullable: false
                 },
                 {
                     name: 'resetpassword',
-                    type: 'nvarchar(max)',
+                    type: 'text',
                     isNullable: false
+                },
+                {
+                    name: 'createdAt',
+                    type: 'timestamp',
+                    isNullable: false,
+                    default: 'now()'
+                },
+                {
+                    name: 'updatedAt',
+                    type: 'timestamp',
+                    isNullable: false,
+                    default: 'now()'
                 }
             ]
         }));
+
+        await queryRunner.createTable(new Table({
+            name: 'partner',
+            columns: [
+                {
+                    name: 'id',
+                    type: 'uuid',
+                    isPrimary: true,
+                    isNullable: false,
+                    default: 'uuid_generate_v4()'
+                },
+                {
+                    name: 'userid',
+                    type: 'uuid',
+                    isNullable: false
+                },
+                {
+                    name: 'name',
+                    type: 'varchar(255)',
+                    isNullable: false
+                },
+                {
+                    name: 'kana',
+                    type: 'varchar(255)',
+                    isNullable: false
+                },
+                {
+                    name: 'createdAt',
+                    type: 'timestamp',
+                    isNullable: false,
+                    default: 'now()'
+                },
+                {
+                    name: 'updatedAt',
+                    type: 'timestamp',
+                    isNullable: false,
+                    default: 'now()'
+                },
+                {
+                    name: 'sex',
+                    type: 'smallint',
+                    isNullable: false,
+                    default: 0
+                },
+                {
+                    name: 'birthday',
+                    type: 'date',
+                    isNullable: false
+                }
+            ],
+            indices: [
+                {
+                    columnNames: [
+                        'userid'
+                    ],
+                    isUnique: false
+                }
+            ]
+        }), true);
     }
 
     public async down(queryRunner: QueryRunner): Promise<any> {

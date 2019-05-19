@@ -49,7 +49,11 @@ export class PartnerService {
                 }
                 else {
                     // ユーザに登録されているパートナー情報を取得する
-                    this.partnerRepository.find({where: {userid: _user.id}})
+                    this.partnerRepository.find(
+                        {
+                            where: {userid: _user.id},
+                            order: {birthday: 'DESC'}
+                        })
                     .then((_partners: Partner[]) => {
                         resolve(_partners);
                     })

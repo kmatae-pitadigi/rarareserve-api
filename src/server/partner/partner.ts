@@ -59,4 +59,11 @@ export class Partner implements IPartner {
     @Field()
     @Column()
     sex: number;
+
+    /**
+     * 誕生日ｓ
+     */
+    @Field()
+    @Column()
+    birthday: Date;
 }

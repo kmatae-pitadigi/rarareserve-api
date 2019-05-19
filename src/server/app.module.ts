@@ -31,17 +31,12 @@ import { Partner } from './partner/partner';
       tracing: (process.env.NODE_ENV || 'development') === 'development'
     }),
     TypeOrmModule.forRoot({
-      type: 'mssql',
+      type: 'postgres',
       host: process.env.DATABASE_HOST,
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       port: parseInt(process.env.DATABASE_PORT, 10),
       database: process.env.DATABASE_DATABASE,
-      extra: {
-        options: {
-          encrypt: process.env.DATABASE_ENCRYPT === 'yes'
-        }
-      },
       logging: process.env.NODE_ENV === 'development',
       migrationsRun: true,
       migrations: [ __dirname + '/../db/migrations/**/*.js'],

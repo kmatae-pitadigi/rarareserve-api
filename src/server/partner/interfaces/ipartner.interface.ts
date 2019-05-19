@@ -6,4 +6,5 @@ export interface IPartner {
     sex: number;
     createdAt?: Date;
     updatedAt?: Date;
+    birthday: Date;
 }

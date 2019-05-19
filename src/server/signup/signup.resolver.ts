@@ -1,6 +1,6 @@
 import { Resolver, Mutation, Args, Context } from '@nestjs/graphql';
 import { SignupService } from './signup.service';
-import { Signup } from './dto/signup.dto';
+import { User } from '../user/user';
 import { SignupResult } from './dto/signup-result.dto';
 import { ConfirmUserResult } from './dto/confirm-user-result.dto';
 import { ResendConfirmMailResult } from './dto/resend-confirm-mail-result.dto';
@@ -10,16 +10,16 @@ import { SendResetPasswordMailResult } from './dto/send-reset-password-mail-resu
 import { SendResetPasswordMail } from './dto/send-reset-password-mail.dto';
 import { ResendConfirmMail } from './dto/resend-confirm-mail.dto';
 
-@Resolver(of => Signup)
+@Resolver(of => User)
 export class SignupResolver {
     constructor(
         private readonly signupServiece: SignupService
     ) {}
 
     @Mutation(returns => SignupResult)
-    signup(@Args('signup') signup: Signup, @Context() ctx: any): Promise<SignupResult> {
+    signup(@Args('user') _user: User, @Context() ctx: any): Promise<SignupResult> {
         return new Promise((resolve, reject) => {
-            this.signupServiece.signup(signup, ctx.req.headers.origin)
+            this.signupServiece.signup(_user, ctx.req.headers.origin)
             .then((signupResult: SignupResult) => {
                 resolve(signupResult);
             })

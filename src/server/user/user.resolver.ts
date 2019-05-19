@@ -7,7 +7,6 @@ import { ChangeEmail } from './dto/change-email.dto';
 import { ChangeEmailResult } from './dto/change-email-result.dto';
 import { ChangePassword } from './dto/change-password.dto';
 import { ChangePasswordResult } from './dto/change-password-result.dto';
-import { ChangeProfile } from './dto/change-profile.dto';
 import { ChangeProfileResult } from './dto/change-profile-result.dto';
 
 @Resolver(of => User)
@@ -60,11 +59,14 @@ export class UserResolver {
 
     @Mutation(returns => ChangeProfileResult)
     @UseGuards(JwtAuthGuard)
-    changeprofile(@Args('changeprofile') _changeProfile: ChangeProfile): Promise<ChangeProfileResult> {
+    changeprofile(@Args('user') _user: User): Promise<ChangeProfileResult> {
         return new Promise((resolve, reject) => {
-            this.userService.changeProfile(_changeProfile)
-            .then((_changeProfileResult: ChangeProfileResult) => {
-                resolve(_changeProfileResult);
+            this.userService.save(_user)
+            .then((_saveUser: User) => {
+                resolve({
+                    result: true,
+                    message: ''
+                });
             })
             .catch((err) => {
                 reject(err);
