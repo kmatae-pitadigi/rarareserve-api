@@ -62,9 +62,9 @@ export class User implements IUser {
     /**
      * パスワード(ハッシュ値)
      */
-    @Field()
+    @Field({nullable: true})
     @Column()
-    password: string;
+    password?: string;
 
     /**
      * ロール

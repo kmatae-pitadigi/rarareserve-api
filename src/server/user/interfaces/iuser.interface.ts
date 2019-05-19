@@ -6,7 +6,7 @@ export interface IUser {
     postcode: string;
     address: string;
     phone: string;
-    password: string;
+    password?: string;
     role: number;
     isemailconfirmed?: boolean;
     ispasswordreset?: boolean;
