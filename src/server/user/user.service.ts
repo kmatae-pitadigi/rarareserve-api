@@ -11,14 +11,16 @@ import { IChangeEmailResult } from './interfaces/ichange-email-result.interface'
 import { EmailService } from '../email/email.service';
 import { IChangePassword } from './interfaces/ichange-password.interface';
 import { IChangePasswordResult } from './interfaces/ichange-password-result.interface';
-import { IChangeProfileResult } from './interfaces/ichange-profile-result.interface';
+import { SiteConfigService } from '../site-config/site-config.service';
+import { SiteConfig } from '../site-config/site-config';
 
 @Injectable()
 export class UserService {
     constructor(
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,
-        private readonly emailService: EmailService
+        private readonly emailService: EmailService,
+        private readonly siteConfigService: SiteConfigService
     ) {}
 
     // 指定されたEメールアドレスのユーザを検索する
@@ -166,24 +168,30 @@ export class UserService {
                 else {
                     // Eメールアドレスを変更する
                     user.email = _changeEmail.email;
-                    // 登録完了フラグを1にする
-                    user.isemailconfirmed = 1;
+                    // 登録完了フラグを0にする
+                    user.isemailconfirmed = 0;
                     this.save(user)
                     .then((_saveUser: IUser) => {
-                        this.emailService.sendTokenMail('changeemailconfirm', 'verifytoken', _saveUser.email, _url)
-                        .then((result: boolean) => {
-                            if (result === true) {
-                                resolve({
-                                    result: true,
-                                    message: ''
-                                });
-                            }
-                            else {
-                                resolve({
-                                    result: false,
-                                    message: 'Eメールアドレス変更完了のメール送信ができません'
-                                });
-                            }
+                        this.siteConfigService.get()
+                        .then((_siteConfig: SiteConfig) => {
+                            this.emailService.sendTokenMail(_siteConfig.changeemailconfirm, 'verifytoken', _saveUser.email, _url)
+                            .then((result: boolean) => {
+                                if (result === true) {
+                                    resolve({
+                                        result: true,
+                                        message: ''
+                                    });
+                                }
+                                else {
+                                    resolve({
+                                        result: false,
+                                        message: 'Eメールアドレス変更完了のメール送信ができません'
+                                    });
+                                }
+                            })
+                            .catch((err) => {
+                                reject(err);
+                            });
                         })
                         .catch((err) => {
                             reject(err);

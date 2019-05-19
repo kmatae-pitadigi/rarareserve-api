@@ -78,8 +78,8 @@ export class User implements IUser {
 
     /**
      * 登録完了待ちフラグ
-     *  1:登録完了待ち
-     *  0:登録完了
+     *  0:登録完了待ち
+     *  1:登録完了
      */
     @Field({nullable: true})
     @Column()
