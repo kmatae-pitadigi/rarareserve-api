@@ -63,4 +63,22 @@ export class PartnerService {
             });
         });
     }
+
+    /**
+     * パートナー情報を削除する
+     * @param _partner パートナー情報
+     * @returns true:成功、false:エラー
+     */
+    remove(_partner: Partner): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            // 指定されたIDのパートナー情報を削除する
+            this.partnerRepository.remove(_partner)
+            .then((_removePartner: Partner) => {
+                resolve(true);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+        });
+    }
 }
