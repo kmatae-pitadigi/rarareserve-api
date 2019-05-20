@@ -3,7 +3,7 @@ import { PartnerService } from './partner.service';
 import { Partner } from './partner';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../guards/jwtauthguard';
-import { AddPartnerResult } from './dto/add-partner-result.dto';
+import { SavePartnerResult } from './dto/save-partner-result.dto';
 
 @Resolver(of => Partner)
 export class PartnerResolver {
@@ -11,13 +11,16 @@ export class PartnerResolver {
         private readonly partnerService: PartnerService
     ) {}
 
-    @Mutation(returns => AddPartnerResult)
+    @Mutation(returns => SavePartnerResult)
     @UseGuards(JwtAuthGuard)
-    addpartner(@Args('partner') _partner: Partner, @Context() ctx: any): Promise<AddPartnerResult> {
+    savepartner(@Args('partner') _partner: Partner, @Context() ctx: any): Promise<SavePartnerResult> {
         return new Promise((resolve, reject) => {
             this.partnerService.save(_partner)
-            .then((_addPartnerResult: AddPartnerResult) => {
-                resolve(_addPartnerResult);
+            .then((_result: boolean) => {
+                resolve({
+                    result: _result,
+                    message: ''
+                });
             })
             .catch((err) => {
                 reject(err);

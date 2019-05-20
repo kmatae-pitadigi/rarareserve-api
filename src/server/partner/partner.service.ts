@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Partner } from './partner';
-import { IAddPartnerResult } from './interfaces/iadd-partner-result.interface';
 import { UserService } from '../user/user.service';
 import { IUser } from '../user/interfaces/iuser.interface';
 
@@ -19,14 +18,11 @@ export class PartnerService {
      * @param _partner パートナー情報
      * @returns 保存結果
      */
-    save(_partner: Partner): Promise<IAddPartnerResult> {
+    save(_partner: Partner): Promise<boolean> {
         return new Promise((resolve, reject) => {
             this.partnerRepository.save(_partner)
             .then((_savePartner: Partner) => {
-                resolve({
-                    result: true,
-                    message: ''
-                });
+                resolve(true);
             })
             .catch((err) => {
                 reject(err);

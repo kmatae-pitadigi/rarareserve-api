@@ -1,4 +1,4 @@
-export interface IAddPartnerResult {
+export interface ISavePartnerResult {
     result: boolean;
     message: string;
 }
