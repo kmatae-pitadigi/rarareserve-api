@@ -22,7 +22,7 @@ ENV NODE_ENV=production \
     PORT=80
 
 # ポート番号を指定
-EXPOSE 80
+# EXPOSE 80
 
 # ビルドする(gulpでサーバー、DBマイグレーションをビルド)
 RUN npm run build
