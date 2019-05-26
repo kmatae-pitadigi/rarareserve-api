@@ -1,5 +1,5 @@
 # 環境
-# サーバー: Node.js,NestJS,GraphQL,TypeORM,SQL Server
+# サーバー: Node.js,NestJS,GraphQL,TypeORM,PostgreSQL
 # ビルド環境
 #   サーバー: webpack+gulp
 
