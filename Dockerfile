@@ -3,8 +3,8 @@
 # ビルド環境
 #   サーバー: webpack+gulp
 
-# 使用するNode.jsのバージョンを設定(ローカル環境に合わせておく)
-FROM node:10.15.3-alpine
+# 使用するNode.jsのバージョンを設定(alpineではbycryptの関係でエラーになる)
+FROM node:10.15.3
 
 # パッケージインストールに必要なファイルをコピー
 COPY package.json package-lock.json ./

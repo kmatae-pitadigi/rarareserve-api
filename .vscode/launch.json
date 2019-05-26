@@ -21,7 +21,7 @@
             "timeout": 20000,
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "envFile": "${workspaceFolder}\\.env.local"
+            "envFile": "${workspaceFolder}\\.env"
         },
         {
             "type": "node",
@@ -30,7 +30,7 @@
             "outputCapture": "std",
             "console": "integratedTerminal",
             "program": "${workspaceFolder}\\dist\\server\\server.js",
-            "envFile": "${workspaceFolder}\\.env.local",
+            "envFile": "${workspaceFolder}\\.env",
             "sourceMaps": true
         },
         {
