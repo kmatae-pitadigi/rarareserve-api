@@ -1,0 +1,30 @@
+version: 2.1
+jobs:
+  deploy:
+    machine:
+      image: circleci/classic:edge
+    steps:
+      - checkout
+      - run:
+          name: setup heroku command
+          command: bash .circleci/setup_heroku.sh
+      - run:
+          name: heroku maintenance on
+          command: heroku maintenance:on --app=${HEROKU_APP_NAME}
+      - run:
+          name: "push container to registry.heroku.com"
+          command: |
+            heroku container:login
+            heroku container:push api --app=${HEROKU_APP_NAME}
+            heroku container:release api --app=${HEROKU_APP_NAME}
+      - run:
+          name: heroku maintenance off
+          command: heroku maintenance:off --app=${HEROKU_APP_NAME}
+workflows:
+  version: 2.1S
+  build_and_deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: develop
