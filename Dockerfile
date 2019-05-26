@@ -18,11 +18,7 @@ RUN npm install pm2 -g
 COPY . .
 
 # 環境変数を設定する
-ENV NODE_ENV=production \
-    PORT=80
-
-# ポート番号を指定
-# EXPOSE 80
+ENV NODE_ENV=production
 
 # ビルドする(gulpでサーバー、DBマイグレーションをビルド)
 RUN npm run build
