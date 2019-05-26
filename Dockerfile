@@ -4,11 +4,12 @@
 #   サーバー: webpack+gulp
 
 # 使用するNode.jsのバージョンを設定(ローカル環境に合わせておく)
-FROM node:10.15.3
+FROM node:10.15.3-alpine
 
+# パッケージインストールに必要なファイルをコピー
 COPY package.json package-lock.json ./
 
-# package.jsonをコンテナにコピーし、必要なパッケージをインストールする
+# 必要なパッケージをインストールする
 RUN npm --unsafe-perm ci
 
 # PM2をインストールする
@@ -18,11 +19,7 @@ RUN npm install pm2 -g
 COPY . .
 
 # 環境変数を設定する
-ENV NODE_ENV=production \
-    PORT=80
-
-# ポート番号を指定
-# EXPOSE 80
+ENV NODE_ENV=production
 
 # ビルドする(gulpでサーバー、DBマイグレーションをビルド)
 RUN npm run build
