@@ -14,7 +14,8 @@ jobs:
       - run:
           name: "push container to registry.heroku.com"
           command: |
-            heroku container:login
+            docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
+            docker push registry.heroku.com/${HEROKU_APP_NAME}/api
             heroku container:push api --app=${HEROKU_APP_NAME}
             heroku container:release api --app=${HEROKU_APP_NAME}
       - run:
