@@ -8,7 +8,7 @@
   "scripts": {
     "build": "npx gulp",
     "format": "prettier --write \"src/**/*.ts\"",
-    "start": "node ./dist/server/server.js",
+    "start": "pm2-runtime ./dist/server/server.js",
     "webpack": "webpack --config webpack.dev.js",
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
@@ -39,6 +39,7 @@
     "passport-jwt": "^4.0.0",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.2",
+    "pm2": "^3.5.1",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",
