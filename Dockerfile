@@ -20,8 +20,6 @@ COPY . .
 
 # 環境変数を設定する
 ENV NODE_ENV=production
-ENV PORT=3000
-EXPOSE ${PORT}
 
 # ビルドする(gulpでサーバー、DBマイグレーションをビルド)
 RUN npm run build
