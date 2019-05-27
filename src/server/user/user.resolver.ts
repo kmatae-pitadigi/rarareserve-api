@@ -17,7 +17,7 @@ export class UserResolver {
 
     @Query(returns => User)
     @UseGuards(JwtAuthGuard)
-    user(@Args('email') _email: string): Promise<User> {
+    user(@Args('email') _email: string, @Context() ctx: any): Promise<User> {
         return new Promise((resolve, reject) => {
             this.userService.findByEmail(_email)
             .then((user: User) => {
