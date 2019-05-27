@@ -1,1 +1,1 @@
-web: node dist/server/server.js
+web: pm2-runtime ./dist/server/server.js
