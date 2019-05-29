@@ -32,17 +32,17 @@ export class Initialize1554538980430 implements MigrationInterface {
                 {
                     name: 'postcode',
                     type: 'varchar(255)',
-                    isNullable: false
+                    isNullable: true
                 },
                 {
                     name: 'address',
                     type: 'varchar(255)',
-                    isNullable: false
+                    isNullable: true
                 },
                 {
                     name: 'phone',
                     type: 'varchar(255)',
-                    isNullable: false
+                    isNullable: true
                 },
                 {
                     name: 'role',

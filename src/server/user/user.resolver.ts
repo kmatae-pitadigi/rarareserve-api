@@ -8,6 +8,7 @@ import { ChangeEmailResult } from './dto/change-email-result.dto';
 import { ChangePassword } from './dto/change-password.dto';
 import { ChangePasswordResult } from './dto/change-password-result.dto';
 import { ChangeProfileResult } from './dto/change-profile-result.dto';
+import { Roles } from '../guards/decorators/roles.decorator';
 
 @Resolver(of => User)
 export class UserResolver {
@@ -45,7 +46,7 @@ export class UserResolver {
 
     @Mutation(returns => ChangePasswordResult)
     @UseGuards(JwtAuthGuard)
-    changepassword(@Args('changepassword') _changePassword: ChangePassword): Promise<ChangePasswordResult> {
+    changepassword(@Args('changepassword') _changePassword: ChangePassword, @Context() ctx: any): Promise<ChangePasswordResult> {
         return new Promise((resolve, reject) => {
             this.userService.changePassword(_changePassword)
             .then((_changePasswordResult: ChangePasswordResult) => {
@@ -59,7 +60,7 @@ export class UserResolver {
 
     @Mutation(returns => ChangeProfileResult)
     @UseGuards(JwtAuthGuard)
-    changeprofile(@Args('user') _user: User): Promise<ChangeProfileResult> {
+    changeprofile(@Args('user') _user: User, @Context() ctx: any): Promise<ChangeProfileResult> {
         return new Promise((resolve, reject) => {
             this.userService.save(_user)
             .then((_saveUser: User) => {
@@ -73,4 +74,20 @@ export class UserResolver {
             });
         });
     }
+
+    @Query(returns => [User])
+    @UseGuards(JwtAuthGuard)
+    @Roles(2)
+    getstaffall(@Context() ctx: any): Promise<User[]> {
+        return new Promise((resolve, reject) => {
+            this.userService.getStaffAll()
+            .then((_user: User[]) => {
+                resolve(_user);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+        });
+    }
+
 }

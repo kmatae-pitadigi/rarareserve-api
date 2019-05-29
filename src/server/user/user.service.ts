@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, In } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { User } from './user';
 import { ISignupResult } from '../signup/interfaces/isignup-result.interface';
@@ -55,7 +55,11 @@ export class UserService {
         });
     }
 
-    // ユーザを追加する
+    /**
+     * ユーザを追加する
+     * @param _user ユーザ情報
+     * @returns 結果
+     */
     add(_user: IUser): Promise<ISignupResult> {
         return new Promise((resolve, reject) => {
             this.findByEmail(_user.email)
@@ -251,5 +255,24 @@ export class UserService {
         const saltRounds: number = 10;
         const salt: string = bcrypt.genSaltSync(saltRounds);
         return bcrypt.hashSync(_password, salt);
+    }
+
+    /**
+     * スタッフ情報を取得する(ロールが管理者かスタッフのユーザ)
+     * @returns スタッフ情報(ユーザ情報)
+     */
+    getStaffAll(): Promise<User[]> {
+        return new Promise((resolve, reject) => {
+            this.userRepository.find({
+                where: { role: In([1, 2]) },
+                order: { kana: 'ASC' }
+            })
+            .then((_user: User[]) => {
+                resolve(_user);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+        });
     }
 }

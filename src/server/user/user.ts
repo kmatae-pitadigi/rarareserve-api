@@ -41,23 +41,23 @@ export class User implements IUser {
     /**
      * 郵便番号
      */
-    @Field()
+    @Field({nullable: true})
     @Column()
-    postcode: string;
+    postcode?: string;
 
     /**
      * 住所
      */
-    @Field()
+    @Field({nullable: true})
     @Column()
-    address: string;
+    address?: string;
 
     /**
      * 電話番号
      */
-    @Field()
+    @Field({nullable: true})
     @Column()
-    phone: string;
+    phone?: string;
 
     /**
      * パスワード(ハッシュ値)
