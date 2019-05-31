@@ -330,15 +330,28 @@ export class UserService {
                             message: '管理者が1名のみのため削除できません'
                         });
                     }
+                    else {
+                        // スタッフ情報を削除する
+                        this.userRepository.remove(_staff)
+                        .then((_user: IUser) => {
+                            resolve({
+                                result: true,
+                                message: ''
+                            });
+                        })
+                        .catch((err) => {
+                            reject(err);
+                        });
+                    }
                 })
                 .catch((err) => {
                     remove = false;
                     reject(err);
                 });
             }
-
-            // 削除できる状況であれば削除する
-            if (remove) {
+             // 普通のスタッフの場合は削除する
+             else {
+                // スタッフ情報を削除する
                 this.userRepository.remove(_staff)
                 .then((_user: IUser) => {
                     resolve({
@@ -349,7 +362,7 @@ export class UserService {
                 .catch((err) => {
                     reject(err);
                 });
-            }
+             }
         });
     }
 }
