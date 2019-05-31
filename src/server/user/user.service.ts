@@ -13,6 +13,9 @@ import { IChangePassword } from './interfaces/ichange-password.interface';
 import { IChangePasswordResult } from './interfaces/ichange-password-result.interface';
 import { SiteConfigService } from '../site-config/site-config.service';
 import { SiteConfig } from '../site-config/site-config';
+import { ISaveStaffResult } from './interfaces/isave-staff-result.interface';
+import { IRemoveStaffResult } from './interfaces/iremove-staff-result.interface';
+import { booleanLiteral } from '@babel/types';
 
 @Injectable()
 export class UserService {
@@ -273,6 +276,78 @@ export class UserService {
             .catch((err) => {
                 reject(err);
             });
+        });
+    }
+
+    /**
+     * スタッフ情報を保存する
+     * @param _staff スタッフ情報(ユーザ情報)
+     * @returns 結果
+     */
+    saveStaff(_staff: User): Promise<ISaveStaffResult> {
+        return new Promise((resolve, reject) => {
+            // パスワードをハッシュ化する
+            _staff.password = this.getPasswordHash(_staff.password);
+            // Eメール確認フラグがtrueにする
+            _staff.isemailconfirmed = true;
+
+            // スタッフ情報を登録する
+            this.userRepository.save(_staff)
+            .then((result: IUser) => {
+                resolve({
+                    result: true,
+                    message: ''
+                });
+            })
+            .catch((err) => {
+                reject(err);
+            });
+        });
+    }
+
+    /**
+     * 指定されたスタッフを削除する
+     * @param _staff スタッフ情報(ユーザ情報)
+     */
+    removeStaff(_staff: IUser): Promise<IRemoveStaffResult> {
+        return new Promise((resolve, reject) => {
+            let remove: boolean = true;
+            // 指定スタッフが管理者だった場合
+            if (_staff.role === 2) {
+                // 管理者ユーザ数を取得する
+                this.userRepository.createQueryBuilder('user')
+                .select('user.id')
+                .where('user.role = 2')
+                .getCount()
+                .then((_count: number) => {
+                    // 管理者が1名だったらエラーにする
+                    if (_count === 1) {
+                        remove = false;
+                        resolve({
+                            result: false,
+                            message: '管理者が1名のみのため削除できません'
+                        });
+                    }
+                })
+                .catch((err) => {
+                    remove = false;
+                    reject(err);
+                });
+            }
+
+            // 削除できる状況であれば削除する
+            if (remove) {
+                this.userRepository.remove(_staff)
+                .then((_user: IUser) => {
+                    resolve({
+                        result: true,
+                        message: ''
+                    });
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+            }
         });
     }
 }
