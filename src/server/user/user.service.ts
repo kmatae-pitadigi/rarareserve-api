@@ -287,7 +287,9 @@ export class UserService {
     saveStaff(_staff: User): Promise<ISaveStaffResult> {
         return new Promise((resolve, reject) => {
             // パスワードをハッシュ化する
-            _staff.password = this.getPasswordHash(_staff.password);
+            if (_staff.password !== undefined) {
+                _staff.password = this.getPasswordHash(_staff.password);
+            }
             // Eメール確認フラグがtrueにする
             _staff.isemailconfirmed = true;
 
