@@ -9,6 +9,8 @@ import { ChangePassword } from './dto/change-password.dto';
 import { ChangePasswordResult } from './dto/change-password-result.dto';
 import { ChangeProfileResult } from './dto/change-profile-result.dto';
 import { Roles } from '../guards/decorators/roles.decorator';
+import { SaveStaffResult } from './dto/save-staff-result.dto';
+import { RemoveStaffResult } from './dto/remove-staff-result.dto';
 
 @Resolver(of => User)
 export class UserResolver {
@@ -90,4 +92,33 @@ export class UserResolver {
         });
     }
 
+    @Mutation(returns => SaveStaffResult)
+    @UseGuards(JwtAuthGuard)
+    @Roles(2)
+    savestaff(@Args('staff') _staff: User, @Context() ctx: any): Promise<SaveStaffResult> {
+        return new Promise((resolve, reject) => {
+            this.userService.saveStaff(_staff)
+            .then((_saveStaffResult: SaveStaffResult) => {
+                resolve(_saveStaffResult);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+        });
+    }
+
+    @Mutation(returns => RemoveStaffResult)
+    @UseGuards(JwtAuthGuard)
+    @Roles(2)
+    removestaff(@Args('staff') _staff: User, @Context() ctx: any): Promise<RemoveStaffResult> {
+        return new Promise((resolve, reject) => {
+            this.userService.removeStaff(_staff)
+            .then((_removeStaffResult: RemoveStaffResult) => {
+                resolve(_removeStaffResult);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+        });
+    }
 }
