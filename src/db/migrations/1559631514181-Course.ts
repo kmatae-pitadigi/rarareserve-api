@@ -14,7 +14,7 @@ export class Course1559631514181 implements MigrationInterface {
                     default: 'uuid_generate_v4()'
                 },
                 {
-                    name: 'num',
+                    name: 'no',
                     type: 'integer',
                     isNullable: true
                 },
@@ -50,12 +50,7 @@ export class Course1559631514181 implements MigrationInterface {
                 },
                 {
                     name: 'color',
-                    type: 'integer',
-                    isNullable: true
-                },
-                {
-                    name: 'no',
-                    type: 'integer',
+                    type: 'varchar(10)',
                     isNullable: true
                 },
                 {

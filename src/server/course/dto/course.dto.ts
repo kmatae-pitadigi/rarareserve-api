@@ -12,7 +12,7 @@ export class Course implements ICourse {
 
     @Field({nullable: true})
     @Column()
-    num: number;
+    no: number;
 
     @Field()
     @Column()
@@ -40,7 +40,7 @@ export class Course implements ICourse {
 
     @Field()
     @Column()
-    color: number;
+    color: string;
 
     @Field({nullable: true})
     @CreateDateColumn()

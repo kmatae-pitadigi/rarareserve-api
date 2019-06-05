@@ -15,7 +15,7 @@ export class CourseService {
      */
     findAll(): Promise<Course[]> {
         return new Promise((resolve, reject) => {
-            this.courseRepository.find({order: {num: 'ASC'}})
+            this.courseRepository.find({order: {no: 'ASC'}})
             .then((_courses: Course[]) => {
                 resolve(_courses);
             })
