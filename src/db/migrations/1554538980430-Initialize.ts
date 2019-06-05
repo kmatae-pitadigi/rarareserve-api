@@ -234,6 +234,7 @@ export class Initialize1554538980430 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<any> {
         await queryRunner.dropTable('user');
+        await queryRunner.dropTable('partner');
         await queryRunner.dropTable('siteconfig');
     }
 
