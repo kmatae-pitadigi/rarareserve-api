@@ -42,6 +42,10 @@ export class Course implements ICourse {
     @Column()
     color: string;
 
+    @Field()
+    @Column()
+    available: boolean;
+
     @Field({nullable: true})
     @CreateDateColumn()
     createdAt?: Date;

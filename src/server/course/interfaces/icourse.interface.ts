@@ -8,6 +8,7 @@ export interface ICourse {
     starttime: Date;
     endtime: Date;
     color: string;
+    available: boolean;
     createdAt?: Date;
     updatedAt?: Date;
 }

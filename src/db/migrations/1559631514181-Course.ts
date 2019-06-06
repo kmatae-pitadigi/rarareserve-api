@@ -54,6 +54,12 @@ export class Course1559631514181 implements MigrationInterface {
                     isNullable: true
                 },
                 {
+                    name: 'available',
+                    type: 'boolean',
+                    isNullable: false,
+                    default: true
+                },
+                {
                     name: 'createdAt',
                     type: 'timestamp',
                     isNullable: false,
