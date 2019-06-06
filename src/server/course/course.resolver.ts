@@ -4,6 +4,7 @@ import { JwtAuthGuard } from '../guards/jwtauthguard';
 import { Roles } from '../guards/decorators/roles.decorator';
 import { Course } from './dto/course.dto';
 import { CourseService } from './course.service';
+import { SaveCourseResult } from './dto/save-course-result.dto';
 
 @Resolver(of => Course)
 export class CourseResolver {
@@ -19,6 +20,21 @@ export class CourseResolver {
             this.courseService.findAll()
             .then((_courses: Course[]) => {
                 reject(_courses);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+        });
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Roles(2)
+    @Mutation(returns => SaveCourseResult)
+    savecourse(@Args('course') _course: Course, @Context() ctx: any): Promise<SaveCourseResult> {
+        return new Promise((resolve, reject) => {
+            this.courseService.save(_course)
+            .then((_saveCourseResult: SaveCourseResult) => {
+                resolve(_saveCourseResult);
             })
             .catch((err) => {
                 reject(err);
