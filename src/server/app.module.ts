@@ -14,47 +14,51 @@ import { RolesGuard } from './guards/rolesguard';
 import { UploadFileModule } from './upload-file/upload-file.module';
 import { PartnerModule } from './partner/partner.module';
 import { Partner } from './partner/partner';
+import { CourseModule } from './course/course.module';
+import { Course } from './course/dto/course.dto';
 
 @Module({
-  imports: [
-    SigninModule,
-    SignupModule,
-    AuthModule,
-    SiteConfigModule,
-    PartnerModule,
-    GraphQLModule.forRoot({
-      installSubscriptionHandlers: true,
-      autoSchemaFile: 'schema.gql',
-      context: ({ req }) => ({ req }),
-      playground: (process.env.NODE_ENV || 'development') === 'development',
-      debug: (process.env.NODE_ENV || 'development') === 'development',
-      tracing: (process.env.NODE_ENV || 'development') === 'development'
-    }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DATABASE_HOST,
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
-      port: parseInt(process.env.DATABASE_PORT, 10),
-      database: process.env.DATABASE_DATABASE,
-      logging: process.env.NODE_ENV === 'development',
-      migrationsRun: true,
-      migrations: [ __dirname + '/../db/migrations/**/*.js'],
-      entities: [
-        User,
-        SiteConfig,
-        Partner
-      ]
-    }),
-    UserModule,
-    EmailModule,
-    UploadFileModule
-  ],
+    imports: [
+        SigninModule,
+        SignupModule,
+        AuthModule,
+        SiteConfigModule,
+        PartnerModule,
+        UserModule,
+        EmailModule,
+        UploadFileModule,
+        CourseModule,
+        GraphQLModule.forRoot({
+            installSubscriptionHandlers: true,
+            autoSchemaFile: 'schema.gql',
+            context: ({ req }) => ({ req }),
+            playground: (process.env.NODE_ENV || 'development') === 'development',
+            debug: (process.env.NODE_ENV || 'development') === 'development',
+            tracing: (process.env.NODE_ENV || 'development') === 'development'
+        }),
+        TypeOrmModule.forRoot({
+            type: 'postgres',
+            host: process.env.DATABASE_HOST,
+            username: process.env.DATABASE_USERNAME,
+            password: process.env.DATABASE_PASSWORD,
+            port: parseInt(process.env.DATABASE_PORT, 10),
+            database: process.env.DATABASE_DATABASE,
+            logging: process.env.NODE_ENV === 'development',
+            migrationsRun: true,
+            migrations: [ __dirname + '/../db/migrations/**/*.js'],
+            entities: [
+                User,
+                SiteConfig,
+                Partner,
+                Course
+            ]
+        }),
+    ],
 
-  providers: [
-    { provide: APP_GUARD, useClass: RolesGuard }
-  ],
+    providers: [
+        { provide: APP_GUARD, useClass: RolesGuard }
+    ],
 
-  controllers: []
+    controllers: []
 })
 export class AppModule {}

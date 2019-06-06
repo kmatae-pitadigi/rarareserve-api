@@ -31,7 +31,8 @@
     "one-variable-per-declaration": [false],
     "no-return-await": false,
     "no-shadowed-variable": false,
-    "no-console": false
+    "no-console": false,
+    "no-trailing-whitespace": false
   },
   "rulesDirectory": []
 }
