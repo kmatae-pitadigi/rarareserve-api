@@ -14,9 +14,16 @@ export class CourseService {
     /**
      * コース情報を取得する
      */
-    findAll(): Promise<Course[]> {
+    findAll(_available: boolean): Promise<Course[]> {
         return new Promise((resolve, reject) => {
-            this.courseRepository.find({order: {no: 'ASC'}})
+            let findParam;
+            if (_available) {
+                findParam = {where: {available: true}, order: {no: 'ASC'}};
+            }
+            else {
+                findParam = {order: {no: 'ASC'}};
+            }
+            this.courseRepository.find(findParam)
             .then((_courses: Course[]) => {
                 resolve(_courses);
             })

@@ -15,9 +15,9 @@ export class CourseResolver {
     @UseGuards(JwtAuthGuard)
     @Roles(2)
     @Query(returns => [Course])
-    getcourses(@Context() ctx: any): Promise<Course[]> {
+    getcourses(@Args('available') _available: boolean, @Context() ctx: any): Promise<Course[]> {
         return new Promise((resolve, reject) => {
-            this.courseService.findAll()
+            this.courseService.findAll(_available)
             .then((_courses: Course[]) => {
                 reject(_courses);
             })
