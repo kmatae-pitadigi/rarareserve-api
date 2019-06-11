@@ -9,6 +9,7 @@ export interface ICourse {
     endtime: Date;
     color: string;
     available: boolean;
+    limit: number;
     createdAt?: Date;
     updatedAt?: Date;
 }
