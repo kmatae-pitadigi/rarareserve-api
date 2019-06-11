@@ -46,6 +46,10 @@ export class Course implements ICourse {
     @Column()
     available: boolean;
 
+    @Field()
+    @Column()
+    limit: number;
+
     @Field({nullable: true})
     @CreateDateColumn()
     createdAt?: Date;

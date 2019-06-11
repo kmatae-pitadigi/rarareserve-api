@@ -60,6 +60,12 @@ export class Course1559631514181 implements MigrationInterface {
                     default: true
                 },
                 {
+                    name: 'limit',
+                    type: 'integer',
+                    isNullable: false,
+                    default: 0
+                },
+                {
                     name: 'createdAt',
                     type: 'timestamp',
                     isNullable: false,
