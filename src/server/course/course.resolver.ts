@@ -12,8 +12,6 @@ export class CourseResolver {
         private readonly courseService: CourseService
     ) {}
 
-    @UseGuards(JwtAuthGuard)
-    @Roles(2)
     @Query(returns => [Course])
     getcourses(@Args('available') _available: boolean, @Context() ctx: any): Promise<Course[]> {
         return new Promise((resolve, reject) => {
