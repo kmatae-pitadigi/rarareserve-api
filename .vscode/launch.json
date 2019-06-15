@@ -5,13 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
-            "request": "launch",
-            "name": "chrome",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
             "type": "node",
             "request": "launch",
             "name": "nodemon",
@@ -26,55 +19,24 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "nodemon-mac",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}/dist/server/server.js",
+            "restart": true,
+            "timeout": 20000,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "node",
             "outputCapture": "std",
             "console": "integratedTerminal",
             "program": "${workspaceFolder}\\dist\\server\\server.js",
             "envFile": "${workspaceFolder}\\.env",
             "sourceMaps": true
-        },
-        {
-            "name": "Launch Server (AZDS)",
-            "type": "node",
-            "request": "launch",
-            "protocol": "inspector",
-            "preLaunchTask": "azds: prelaunch",
-            "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "azds",
-            "runtimeArgs": [
-                "exec",
-                "--on-exit-resume-up",
-                "--",
-                "node",
-                "--inspect=0.0.0.0:9229",
-                "--inspect-brk",
-                "--nolazy",
-                "server.js"
-            ],
-            "address": "127.0.0.1",
-            "port": 52405,
-            "localRoot": "${workspaceFolder}/.",
-            "remoteRoot": "/app"
-        },
-        {
-            "name": "Attach to Server (AZDS)",
-            "type": "node",
-            "request": "attach",
-            "protocol": "inspector",
-            "preLaunchTask": "azds: preattach",
-            "cwd": "${workspaceFolder}",
-            "address": "127.0.0.1",
-            "port": 52405,
-            "localRoot": "${workspaceFolder}/.",
-            "remoteRoot": "/app",
-            "restart": true
-        }
-    ],
-    // Node.jsとAngularのデバッグを開始する設定
-    "compounds": [
-        {
-            "name": "fullstack",
-            "configurations": ["node", "chrome"]
         }
     ]
 }

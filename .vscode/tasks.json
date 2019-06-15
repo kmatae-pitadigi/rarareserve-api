@@ -4,6 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "build",
             "type": "npm",
             "script": "build",
             "group": {
@@ -16,39 +17,6 @@
             "label": "stopnode",
             "type": "shell",
             "command": "powershell -Command Stop-Process -Name node",
-            "problemMatcher": []
-        },
-        {
-            "label": "azds: prelaunch",
-            "command": "azds",
-            "args": [
-                "up",
-                "--port=52405:9229",
-                "--await-exec",
-                "--keep-alive"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "azds: preattach",
-            "command": "azds",
-            "args": [
-                "up",
-                "--port=52405:9229",
-                "--sync-only",
-                "--keep-alive",
-                "--command=node_modules/.bin/nodemon",
-                "--",
-                "--inspect=0.0.0.0:9229",
-                "--nolazy",
-                "server.js"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
             "problemMatcher": []
         }
     ]
